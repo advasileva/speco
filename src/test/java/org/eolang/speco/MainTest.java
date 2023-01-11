@@ -110,7 +110,7 @@ public final class MainTest {
         if (SystemUtils.IS_OS_WINDOWS) {
             command = "cmd /c eoc link -s %s && eoc --alone dataize app && eoc clean";
         } else {
-            command = String.format("eoc link -s %s ; eoc --alone dataize app", target);
+            command = String.format("eoc link -s %s && eoc --alone dataize app && eoc clean", target);
             // command = "ls ; ls";
         }
         System.out.println(command);
