@@ -114,7 +114,7 @@ public final class MainTest {
         }
         System.out.println(command);
         Runtime.getRuntime().exec(String.format(command, target));
-        final Process process = Runtime.getRuntime().exec("eoc --alone dataize app");
+        final Process process = Runtime.getRuntime().exec("eoc dataize app");
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
