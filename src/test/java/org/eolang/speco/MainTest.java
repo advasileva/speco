@@ -110,12 +110,15 @@ public final class MainTest {
         if (SystemUtils.IS_OS_WINDOWS) {
             command = "cmd /c eoc link -s %s && eoc --alone dataize app && eoc clean";
         } else {
-            command = "eoc link -s %s && eoc --alone dataize app && eoc clean";
+            command = "eoc";
         }
         final Process process = Runtime.getRuntime().exec(String.format(command, target));
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
+        for (final String line : output) {
+            System.out.println(line);
+        }
         final String[] result = Arrays.copyOfRange(output, 11, output.length - 1);
         return Arrays.asList(result);
     }
