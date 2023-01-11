@@ -23,6 +23,7 @@
  */
 package org.eolang.speco;
 
+import com.jcabi.log.Logger;
 import com.jcabi.xml.XML;
 import com.jcabi.xml.XMLDocument;
 import com.yegor256.xsline.Shift;
@@ -104,8 +105,11 @@ final class Speco {
             Files.write(this.output.resolve(path.getFileName()), after.getBytes());
         }
         if (this.eolang) {
-            FileUtils.cleanDirectory(source.toFile());
-            FileUtils.deleteDirectory(source.toFile());
+            try {
+                FileUtils.deleteDirectory(source.toFile());
+            } catch (final IOException exception) {
+                exception.printStackTrace();
+            }
         }
     }
 
