@@ -113,7 +113,7 @@ public final class MainTest {
             command = "sh -c ls ; ls";
         }
         System.out.println(command);
-        final Process process = Runtime.getRuntime().exec(command);
+        final Process process = new ProcessBuilder("bash", "-c", "ls ; pwd").start();
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
