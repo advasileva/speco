@@ -109,13 +109,15 @@ public final class MainTest {
         final String pattern = "eoc link -s %s && eoc --alone dataize app && eoc clean";
         final String command = String.format(pattern, target);
         final String executor;
+        final String flag;
         if (SystemUtils.IS_OS_WINDOWS) {
             executor = "cmd";
+            flag = "/c";
         } else {
             executor = "bash";
+            flag = "-c";
         }
-        System.out.println(command);
-        final Process process = new ProcessBuilder(executor, "-c", command).start();
+        final Process process = new ProcessBuilder(executor, flag, command).start();
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
