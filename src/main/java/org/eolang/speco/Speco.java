@@ -105,14 +105,10 @@ final class Speco {
             Files.write(this.output.resolve(path.getFileName()), after.getBytes());
         }
         if (this.eolang) {
-            System.out.println(source.toString());
-            System.out.println(source.toFile().exists());
-            source.toFile().deleteOnExit();
-            System.out.println();
             try {
-                FileUtils.cleanDirectory(source.toFile());
-            } catch (IOException exception) {
-                exception.printStackTrace();;
+                FileUtils.deleteDirectory(source.toFile());
+            } catch (final IOException exception) {
+                exception.printStackTrace();
             }
         }
     }
