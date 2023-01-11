@@ -106,15 +106,16 @@ public final class MainTest {
      * @throws IOException
      */
     private List<String> exec(final String target) throws IOException {
-        final String command;
+        final String pattern = "eoc link -s %s && eoc --alone dataize app && eoc clean";
+        final String command = String.format(pattern, target);
+        final String executor;
         if (SystemUtils.IS_OS_WINDOWS) {
-            command = "cmd /c eoc link -s %s && eoc --alone dataize app && eoc clean";
+            executor = "cmd";
         } else {
-            command = String.format("eoc link -s %s && eoc --alone dataize app && eoc clean", target);
-            // command = "ls ; ls";
+            executor = "bash";
         }
         System.out.println(command);
-        final Process process = new ProcessBuilder("bash", "-c", command).start();
+        final Process process = new ProcessBuilder(executor, "-c", command).start();
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
