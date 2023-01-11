@@ -107,8 +107,7 @@ final class Speco {
         if (this.eolang) {
             System.out.println(source.toString());
             System.out.println(source.toFile().exists());
-            System.out.println(source.toFile().delete());
-            FileUtils.deleteDirectory(source.toFile());
+            source.toFile().deleteOnExit();
         }
     }
 
