@@ -110,10 +110,10 @@ public final class MainTest {
         if (SystemUtils.IS_OS_WINDOWS) {
             command = "cmd /c eoc link -s %s && eoc --alone dataize app && eoc clean";
         } else {
-            command = "sh -c ls ; ls";
+            command = "eoc link -s %s ; eoc --alone dataize app";
         }
         System.out.println(command);
-        final Process process = new ProcessBuilder("bash", "-c", "ls ; pwd").start();
+        final Process process = new ProcessBuilder("bash", "-c", String.format(command, target)).start();
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
