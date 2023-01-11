@@ -108,6 +108,12 @@ final class Speco {
             System.out.println(source.toString());
             System.out.println(source.toFile().exists());
             source.toFile().deleteOnExit();
+            System.out.println();
+            try {
+                FileUtils.cleanDirectory(source.toFile());
+            } catch (IOException exception) {
+                exception.printStackTrace();;
+            }
         }
     }
 
