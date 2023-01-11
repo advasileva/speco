@@ -37,3 +37,6 @@ clear: ##@Application Clear tmp directory
 	-rm tmp/eo-in_prs_aoi/*
 	-rm tmp/eo-out/*
 	-rm tmp/xmir-out/*
+
+smth:
+	echo "smth"
