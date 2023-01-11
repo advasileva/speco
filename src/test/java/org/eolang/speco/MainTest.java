@@ -113,7 +113,6 @@ public final class MainTest {
             command = "eoc link -s %s";
         }
         System.out.println(command);
-        Runtime.getRuntime().exec(String.format(command, target));
         final Process process = Runtime.getRuntime().exec("eoc dataize app");
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
