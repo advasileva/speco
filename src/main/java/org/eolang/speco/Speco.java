@@ -23,7 +23,6 @@
  */
 package org.eolang.speco;
 
-import com.jcabi.log.Logger;
 import com.jcabi.xml.XML;
 import com.jcabi.xml.XMLDocument;
 import com.yegor256.xsline.Shift;
