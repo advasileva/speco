@@ -121,9 +121,6 @@ public final class MainTest {
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
-        for (final String line : output) {
-            System.out.println(line);
-        }
         final String[] result = Arrays.copyOfRange(output, 11, output.length - 1);
         return Arrays.asList(result);
     }
