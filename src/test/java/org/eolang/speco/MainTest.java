@@ -130,9 +130,7 @@ public final class MainTest {
         }
         System.out.println(executor + flag + command);
         final Process process = new ProcessBuilder(executor, flag, command).start();
-        final StringWriter writer = new StringWriter();
-        IOUtils.copy(process.getInputStream(), writer);
-        final String[] output = writer.toString().split("\\r?\\n");
+        final String[] output = new String(process.getInputStream().readAllBytes()).split("\\r?\\n");
         for (final String line : output) {
             System.out.println(line);
         }

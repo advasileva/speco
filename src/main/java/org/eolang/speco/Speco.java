@@ -103,13 +103,6 @@ final class Speco {
             Files.createDirectories(this.output);
             Files.write(this.output.resolve(path.getFileName()), after.getBytes());
         }
-        if (this.eolang) {
-            try {
-                FileUtils.deleteDirectory(source.toFile());
-            } catch (final IOException exception) {
-                exception.printStackTrace();
-            }
-        }
     }
 
     /**
@@ -160,7 +153,6 @@ final class Speco {
             ).parse();
         }
         LauncherKt.launch(source.toString());
-        FileUtils.deleteDirectory(source.toFile());
         return Path.of(name.append("_aoi").toString());
     }
 }

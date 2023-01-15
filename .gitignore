@@ -8,3 +8,5 @@ target/
 .classpath
 .recommenders
 speco.jar
+*_prs/
+*_prs_aoi/
