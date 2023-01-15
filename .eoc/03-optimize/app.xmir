@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program ms="366"
+          name="app"
+          source="C:\Users\angel\AppData\Local\Temp\junit17594435364197266878\app.eo"
+          time="2023-01-15T13:04:04.829930900Z"
+          version="0.28.17">
+   <listing>[] &gt; cat
+  [] &gt; talk
+    QQ
+    .io
+    .stdout &gt; @
+      "Meow!\n"
+
+[] &gt; dog
+  [] &gt; talk
+    QQ
+    .io
+    .stdout &gt; @
+      "Woof!\n"
+  [] &gt; smth
+    QQ
+    .io
+    .stdout &gt; @
+      "smth\n"
+
+[x] &gt; some_object
+  x
+  .talk &gt; @
+
+[x] &gt; other_object
+  seq &gt; @
+    x
+    .talk
+    x
+    .smth
+
+[] &gt; app
+  seq &gt; @
+    some_object_spec_x_cat
+      cat
+    other_object_spec_x_dog
+      dog
+
+[x] &gt; some_object_spec_x_cat
+  x
+  .talk &gt; @
+
+[x] &gt; some_object_spec_x_dog
+  x
+  .talk &gt; @
+
+[x] &gt; other_object_spec_x_dog
+  seq &gt; @
+    x
+    .talk
+    x
+    .smth
+</listing>
+   <errors>
+      <error check="missing-package"
+              line=""
+              severity="warning"
+              sheet="mandatory-package-meta"
+              step="0">Missing package</error>
+   </errors>
+   <sheets>
+      <sheet>not-empty-atoms</sheet>
+      <sheet>middle-varargs</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>many-free-attributes</sheet>
+      <sheet>broken-aliases</sheet>
+      <sheet>duplicate-aliases</sheet>
+      <sheet>global-nonames</sheet>
+      <sheet>same-line-names</sheet>
+      <sheet>self-naming</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>wrap-method-calls</sheet>
+      <sheet>expand-qqs</sheet>
+      <sheet>add-probes</sheet>
+      <sheet>vars-float-up</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>unsorted-metas</sheet>
+      <sheet>incorrect-architect</sheet>
+      <sheet>expand-aliases</sheet>
+      <sheet>resolve-aliases</sheet>
+      <sheet>synthetic-references</sheet>
+      <sheet>add-default-package</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>unknown-names</sheet>
+      <sheet>noname-attributes</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>duplicate-metas</sheet>
+      <sheet>mandatory-package-meta</sheet>
+      <sheet>correct-package-meta</sheet>
+      <sheet>unused-aliases</sheet>
+      <sheet>data-objects</sheet>
+      <sheet>unit-test-without-phi</sheet>
+      <sheet>set-locators</sheet>
+      <sheet>globals-to-abstracts</sheet>
+      <sheet>remove-refs</sheet>
+      <sheet>abstracts-float-up</sheet>
+      <sheet>remove-levels</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>fix-missed-names</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>constant-folding</sheet>
+      <sheet>set-locators</sheet>
+   </sheets>
+   <objects>
+      <o abstract=""
+          line="1"
+          loc="Φ.cat"
+          name="cat"
+          original-name="cat"
+          pos="0">
+         <o abstract=""
+             base="cat$talk"
+             cut="0"
+             line="2"
+             loc="Φ.cat.talk"
+             name="talk"
+             pos="2"
+             ref="2"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="2"
+          loc="Φ.cat$talk"
+          name="cat$talk"
+          original-name="talk"
+          parent="cat"
+          pos="2">
+         <o base=".stdout" line="5" loc="Φ.cat$talk.φ" name="@" pos="4">
+            <o base=".io" line="4" loc="Φ.cat$talk.φ.ρ" pos="4">
+               <o base=".eolang" line="3" loc="Φ.cat$talk.φ.ρ.ρ" pos="4">
+                  <o base=".org" line="3" loc="Φ.cat$talk.φ.ρ.ρ.ρ" pos="4">
+                     <o base="Q" line="3" loc="Φ.cat$talk.φ.ρ.ρ.ρ.ρ" pos="4"/>
+                  </o>
+               </o>
+            </o>
+            <o base="org.eolang.string"
+                data="bytes"
+                line="6"
+                loc="Φ.cat$talk.φ.α0"
+                pos="6">4D 65 6F 77 21 0A</o>
+         </o>
+      </o>
+      <o abstract=""
+          line="8"
+          loc="Φ.dog"
+          name="dog"
+          original-name="dog"
+          pos="0">
+         <o abstract=""
+             base="dog$talk"
+             cut="8"
+             line="9"
+             loc="Φ.dog.talk"
+             name="talk"
+             pos="2"
+             ref="9">
+            <o as="smth"
+                base="smth"
+                level="1"
+                loc="Φ.dog.talk.α0"
+                ref="14"/>
+         </o>
+         <o abstract=""
+             base="dog$smth"
+             cut="15"
+             line="14"
+             loc="Φ.dog.smth"
+             name="smth"
+             pos="2"
+             ref="14">
+            <o as="talk" base="talk" level="1" loc="Φ.dog.smth.α0" ref="9"/>
+         </o>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="9"
+          loc="Φ.dog$talk"
+          name="dog$talk"
+          original-name="talk"
+          parent="dog"
+          pos="2">
+         <o base=".stdout"
+             line="12"
+             loc="Φ.dog$talk.φ"
+             name="@"
+             pos="4">
+            <o base=".io" line="11" loc="Φ.dog$talk.φ.ρ" pos="4">
+               <o base=".eolang" line="10" loc="Φ.dog$talk.φ.ρ.ρ" pos="4">
+                  <o base=".org" line="10" loc="Φ.dog$talk.φ.ρ.ρ.ρ" pos="4">
+                     <o base="Q" line="10" loc="Φ.dog$talk.φ.ρ.ρ.ρ.ρ" pos="4"/>
+                  </o>
+               </o>
+            </o>
+            <o base="org.eolang.string"
+                data="bytes"
+                line="13"
+                loc="Φ.dog$talk.φ.α0"
+                pos="6">57 6F 6F 66 21 0A</o>
+         </o>
+         <o level="1" line="9.14" loc="Φ.dog$talk.smth" name="smth"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="14"
+          loc="Φ.dog$smth"
+          name="dog$smth"
+          original-name="smth"
+          parent="dog"
+          pos="2">
+         <o base=".stdout"
+             line="17"
+             loc="Φ.dog$smth.φ"
+             name="@"
+             pos="4">
+            <o base=".io" line="16" loc="Φ.dog$smth.φ.ρ" pos="4">
+               <o base=".eolang" line="15" loc="Φ.dog$smth.φ.ρ.ρ" pos="4">
+                  <o base=".org" line="15" loc="Φ.dog$smth.φ.ρ.ρ.ρ" pos="4">
+                     <o base="Q" line="15" loc="Φ.dog$smth.φ.ρ.ρ.ρ.ρ" pos="4"/>
+                  </o>
+               </o>
+            </o>
+            <o base="org.eolang.string"
+                data="bytes"
+                line="18"
+                loc="Φ.dog$smth.φ.α0"
+                pos="6">73 6D 74 68 0A</o>
+         </o>
+         <o level="1" line="14.9" loc="Φ.dog$smth.talk" name="talk"/>
+      </o>
+      <o abstract=""
+          line="20"
+          loc="Φ.some_object"
+          name="some_object"
+          original-name="some_object"
+          pos="0">
+         <o line="20" loc="Φ.some_object.x" name="x" pos="1"/>
+         <o base=".talk"
+             line="22"
+             loc="Φ.some_object.φ"
+             name="@"
+             pos="2">
+            <o base="x" line="21" loc="Φ.some_object.φ.ρ" pos="2" ref="20"/>
+         </o>
+      </o>
+      <o abstract=""
+          line="24"
+          loc="Φ.other_object"
+          name="other_object"
+          original-name="other_object"
+          pos="0">
+         <o line="24" loc="Φ.other_object.x" name="x" pos="1"/>
+         <o base="org.eolang.seq"
+             line="25"
+             loc="Φ.other_object.φ"
+             name="@"
+             pos="2">
+            <o base=".talk" line="27" loc="Φ.other_object.φ.α0" pos="4">
+               <o base="x"
+                   line="26"
+                   loc="Φ.other_object.φ.α0.ρ"
+                   pos="4"
+                   ref="24"/>
+            </o>
+            <o base=".smth" line="29" loc="Φ.other_object.φ.α1" pos="4">
+               <o base="x"
+                   line="28"
+                   loc="Φ.other_object.φ.α1.ρ"
+                   pos="4"
+                   ref="24"/>
+            </o>
+         </o>
+      </o>
+      <o abstract=""
+          line="31"
+          loc="Φ.app"
+          name="app"
+          original-name="app"
+          pos="0">
+         <o base="org.eolang.seq"
+             line="32"
+             loc="Φ.app.φ"
+             name="@"
+             pos="2">
+            <o base="some_object_spec_x_cat"
+                line="33"
+                loc="Φ.app.φ.α0"
+                pos="4"
+                ref="38">
+               <o base="cat" line="34" loc="Φ.app.φ.α0.α0" pos="6" ref="1"/>
+            </o>
+            <o base="other_object_spec_x_dog"
+                line="35"
+                loc="Φ.app.φ.α1"
+                pos="4"
+                ref="46">
+               <o base="dog" line="36" loc="Φ.app.φ.α1.α0" pos="6" ref="8"/>
+            </o>
+         </o>
+      </o>
+      <o abstract=""
+          line="38"
+          loc="Φ.some_object_spec_x_cat"
+          name="some_object_spec_x_cat"
+          original-name="some_object_spec_x_cat"
+          pos="0">
+         <o line="38" loc="Φ.some_object_spec_x_cat.x" name="x" pos="1"/>
+         <o base=".talk"
+             line="40"
+             loc="Φ.some_object_spec_x_cat.φ"
+             name="@"
+             pos="2">
+            <o base="x"
+                line="39"
+                loc="Φ.some_object_spec_x_cat.φ.ρ"
+                pos="2"
+                ref="38"/>
+         </o>
+      </o>
+      <o abstract=""
+          line="42"
+          loc="Φ.some_object_spec_x_dog"
+          name="some_object_spec_x_dog"
+          original-name="some_object_spec_x_dog"
+          pos="0">
+         <o line="42" loc="Φ.some_object_spec_x_dog.x" name="x" pos="1"/>
+         <o base=".talk"
+             line="44"
+             loc="Φ.some_object_spec_x_dog.φ"
+             name="@"
+             pos="2">
+            <o base="x"
+                line="43"
+                loc="Φ.some_object_spec_x_dog.φ.ρ"
+                pos="2"
+                ref="42"/>
+         </o>
+      </o>
+      <o abstract=""
+          line="46"
+          loc="Φ.other_object_spec_x_dog"
+          name="other_object_spec_x_dog"
+          original-name="other_object_spec_x_dog"
+          pos="0">
+         <o line="46" loc="Φ.other_object_spec_x_dog.x" name="x" pos="1"/>
+         <o base="org.eolang.seq"
+             line="47"
+             loc="Φ.other_object_spec_x_dog.φ"
+             name="@"
+             pos="2">
+            <o base=".talk"
+                line="49"
+                loc="Φ.other_object_spec_x_dog.φ.α0"
+                pos="4">
+               <o base="x"
+                   line="48"
+                   loc="Φ.other_object_spec_x_dog.φ.α0.ρ"
+                   pos="4"
+                   ref="46"/>
+            </o>
+            <o base=".smth"
+                line="51"
+                loc="Φ.other_object_spec_x_dog.φ.α1"
+                pos="4">
+               <o base="x"
+                   line="50"
+                   loc="Φ.other_object_spec_x_dog.φ.α1.ρ"
+                   pos="4"
+                   ref="46"/>
+            </o>
+         </o>
+      </o>
+   </objects>
+</program>

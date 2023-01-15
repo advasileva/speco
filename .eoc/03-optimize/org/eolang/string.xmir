@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program ms="19"
+          name="org.eolang.string"
+          source="D:\Development\Java\Objectionary\hw\.eoc\04-pull\org\eolang\string.eo"
+          time="2023-01-08T10:48:42.818994500Z"
+          version="0.28.16">
+   <listing># The MIT License (MIT)
+#
+#  2016-2022 Objectionary.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
++architect yegor256@gmail.com
++home https://github.com/objectionary/eo
++package org.eolang
++rt jvm org.eolang:eo-runtime:0.28.14
++version 0.28.14
+
+[] &gt; string
+  # Is true if both objects are equal
+  [x] &gt; eq
+    eq. &gt; @
+      ^.as-bytes
+      x.as-bytes
+
+  # Get the length of it
+  [] &gt; length /int
+
+  # Turn it into bytes.
+  [] &gt; as-bytes /bytes
+
+  # Converts this to hash
+  [] &gt; as-hash
+    as-hash. &gt; @
+      ^.as-bytes
+
+  # Takes a piece of a string as another string
+  [start len] &gt; slice /string
+</listing>
+   <errors/>
+   <sheets>
+      <sheet>not-empty-atoms</sheet>
+      <sheet>middle-varargs</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>many-free-attributes</sheet>
+      <sheet>broken-aliases</sheet>
+      <sheet>duplicate-aliases</sheet>
+      <sheet>global-nonames</sheet>
+      <sheet>same-line-names</sheet>
+      <sheet>self-naming</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>wrap-method-calls</sheet>
+      <sheet>expand-qqs</sheet>
+      <sheet>add-probes</sheet>
+      <sheet>vars-float-up</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>unsorted-metas</sheet>
+      <sheet>incorrect-architect</sheet>
+      <sheet>expand-aliases</sheet>
+      <sheet>resolve-aliases</sheet>
+      <sheet>synthetic-references</sheet>
+      <sheet>add-default-package</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>unknown-names</sheet>
+      <sheet>noname-attributes</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>duplicate-metas</sheet>
+      <sheet>mandatory-package-meta</sheet>
+      <sheet>correct-package-meta</sheet>
+      <sheet>unused-aliases</sheet>
+      <sheet>data-objects</sheet>
+      <sheet>unit-test-without-phi</sheet>
+      <sheet>set-locators</sheet>
+      <sheet>globals-to-abstracts</sheet>
+      <sheet>remove-refs</sheet>
+      <sheet>abstracts-float-up</sheet>
+      <sheet>remove-levels</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>fix-missed-names</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>constant-folding</sheet>
+      <sheet>set-locators</sheet>
+   </sheets>
+   <license>The MIT License (MIT)
+
+2016-2022 Objectionary.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</license>
+   <metas>
+      <meta line="23">
+         <head>architect</head>
+         <tail>yegor256@gmail.com</tail>
+         <part>yegor256@gmail.com</part>
+      </meta>
+      <meta line="24">
+         <head>home</head>
+         <tail>https://github.com/objectionary/eo</tail>
+         <part>https://github.com/objectionary/eo</part>
+      </meta>
+      <meta line="25">
+         <head>package</head>
+         <tail>org.eolang</tail>
+         <part>org.eolang</part>
+      </meta>
+      <meta line="26">
+         <head>rt</head>
+         <tail>jvm org.eolang:eo-runtime:0.28.14</tail>
+         <part>jvm</part>
+         <part>org.eolang:eo-runtime:0.28.14</part>
+      </meta>
+      <meta line="27">
+         <head>version</head>
+         <tail>0.28.14</tail>
+         <part>0.28.14</part>
+      </meta>
+      <meta line="32">
+         <head>probe</head>
+         <tail>^.as-bytes.eq</tail>
+         <part>^.as-bytes.eq</part>
+      </meta>
+      <meta line="34">
+         <head>probe</head>
+         <tail>x.as-bytes</tail>
+         <part>x.as-bytes</part>
+      </meta>
+      <meta line="44">
+         <head>probe</head>
+         <tail>^.as-bytes.as-hash</tail>
+         <part>^.as-bytes.as-hash</part>
+      </meta>
+      <meta line="45">
+         <head>probe</head>
+         <tail>^.as-bytes</tail>
+         <part>^.as-bytes</part>
+      </meta>
+   </metas>
+   <objects>
+      <o abstract=""
+          line="29"
+          loc="Φ.org.eolang.string"
+          name="string"
+          original-name="string"
+          pos="0">
+         <o abstract=""
+             base="string$eq"
+             cut="0"
+             line="30"
+             loc="Φ.org.eolang.string.eq"
+             name="eq"
+             pos="2"
+             ref="30">
+            <o as="length"
+                base="length"
+                level="1"
+                loc="Φ.org.eolang.string.eq.α0"
+                ref="36"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.string.eq.α1"
+                ref="39"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.string.eq.α2"
+                ref="42"/>
+            <o as="slice"
+                base="slice"
+                level="1"
+                loc="Φ.org.eolang.string.eq.α3"
+                ref="47"/>
+         </o>
+         <o abstract=""
+             atom="int"
+             base="string$length"
+             cut="7"
+             line="36"
+             loc="Φ.org.eolang.string.length"
+             name="length"
+             pos="2"
+             ref="36">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.string.length.α0"
+                ref="30"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.string.length.α1"
+                ref="39"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.string.length.α2"
+                ref="42"/>
+            <o as="slice"
+                base="slice"
+                level="1"
+                loc="Φ.org.eolang.string.length.α3"
+                ref="47"/>
+         </o>
+         <o abstract=""
+             atom="bytes"
+             base="string$as-bytes"
+             cut="8"
+             line="39"
+             loc="Φ.org.eolang.string.as-bytes"
+             name="as-bytes"
+             pos="2"
+             ref="39">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.string.as-bytes.α0"
+                ref="30"/>
+            <o as="length"
+                base="length"
+                level="1"
+                loc="Φ.org.eolang.string.as-bytes.α1"
+                ref="36"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.string.as-bytes.α2"
+                ref="42"/>
+            <o as="slice"
+                base="slice"
+                level="1"
+                loc="Φ.org.eolang.string.as-bytes.α3"
+                ref="47"/>
+         </o>
+         <o abstract=""
+             base="string$as-hash"
+             cut="9"
+             line="42"
+             loc="Φ.org.eolang.string.as-hash"
+             name="as-hash"
+             pos="2"
+             ref="42">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.string.as-hash.α0"
+                ref="30"/>
+            <o as="length"
+                base="length"
+                level="1"
+                loc="Φ.org.eolang.string.as-hash.α1"
+                ref="36"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.string.as-hash.α2"
+                ref="39"/>
+            <o as="slice"
+                base="slice"
+                level="1"
+                loc="Φ.org.eolang.string.as-hash.α3"
+                ref="47"/>
+         </o>
+         <o abstract=""
+             atom="string"
+             base="string$slice"
+             cut="13"
+             line="47"
+             loc="Φ.org.eolang.string.slice"
+             name="slice"
+             pos="2"
+             ref="47">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.string.slice.α0"
+                ref="30"/>
+            <o as="length"
+                base="length"
+                level="1"
+                loc="Φ.org.eolang.string.slice.α1"
+                ref="36"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.string.slice.α2"
+                ref="39"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.string.slice.α3"
+                ref="42"/>
+         </o>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="30"
+          loc="Φ.org.eolang.string$eq"
+          name="string$eq"
+          original-name="eq"
+          parent="string"
+          pos="2">
+         <o line="31" loc="Φ.org.eolang.string$eq.x" name="x" pos="3"/>
+         <o base=".eq"
+             line="32"
+             loc="Φ.org.eolang.string$eq.φ"
+             name="@"
+             pos="4">
+            <o base=".as-bytes"
+                line="33"
+                loc="Φ.org.eolang.string$eq.φ.ρ"
+                pos="7">
+               <o base="^" line="33" loc="Φ.org.eolang.string$eq.φ.ρ.ρ" pos="6"/>
+            </o>
+            <o base=".as-bytes"
+                line="34"
+                loc="Φ.org.eolang.string$eq.φ.ρ"
+                pos="7">
+               <o base="x"
+                   line="34"
+                   loc="Φ.org.eolang.string$eq.φ.ρ.ρ"
+                   pos="6"
+                   ref="31"/>
+            </o>
+         </o>
+         <o level="1"
+             line="30.36"
+             loc="Φ.org.eolang.string$eq.length"
+             name="length"/>
+         <o level="1"
+             line="30.39"
+             loc="Φ.org.eolang.string$eq.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="30.42"
+             loc="Φ.org.eolang.string$eq.as-hash"
+             name="as-hash"/>
+         <o level="1"
+             line="30.47"
+             loc="Φ.org.eolang.string$eq.slice"
+             name="slice"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="int"
+          line="36"
+          loc="Φ.org.eolang.string$length"
+          name="string$length"
+          original-name="length"
+          parent="string"
+          pos="2">
+         <o level="1"
+             line="36.30"
+             loc="Φ.org.eolang.string$length.eq"
+             name="eq"/>
+         <o level="1"
+             line="36.39"
+             loc="Φ.org.eolang.string$length.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="36.42"
+             loc="Φ.org.eolang.string$length.as-hash"
+             name="as-hash"/>
+         <o level="1"
+             line="36.47"
+             loc="Φ.org.eolang.string$length.slice"
+             name="slice"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="bytes"
+          line="39"
+          loc="Φ.org.eolang.string$as-bytes"
+          name="string$as-bytes"
+          original-name="as-bytes"
+          parent="string"
+          pos="2">
+         <o level="1"
+             line="39.30"
+             loc="Φ.org.eolang.string$as-bytes.eq"
+             name="eq"/>
+         <o level="1"
+             line="39.36"
+             loc="Φ.org.eolang.string$as-bytes.length"
+             name="length"/>
+         <o level="1"
+             line="39.42"
+             loc="Φ.org.eolang.string$as-bytes.as-hash"
+             name="as-hash"/>
+         <o level="1"
+             line="39.47"
+             loc="Φ.org.eolang.string$as-bytes.slice"
+             name="slice"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="42"
+          loc="Φ.org.eolang.string$as-hash"
+          name="string$as-hash"
+          original-name="as-hash"
+          parent="string"
+          pos="2">
+         <o base=".as-hash"
+             line="44"
+             loc="Φ.org.eolang.string$as-hash.φ"
+             name="@"
+             pos="4">
+            <o base=".as-bytes"
+                line="45"
+                loc="Φ.org.eolang.string$as-hash.φ.ρ"
+                pos="7">
+               <o base="^"
+                   line="45"
+                   loc="Φ.org.eolang.string$as-hash.φ.ρ.ρ"
+                   pos="6"/>
+            </o>
+         </o>
+         <o level="1"
+             line="42.30"
+             loc="Φ.org.eolang.string$as-hash.eq"
+             name="eq"/>
+         <o level="1"
+             line="42.36"
+             loc="Φ.org.eolang.string$as-hash.length"
+             name="length"/>
+         <o level="1"
+             line="42.39"
+             loc="Φ.org.eolang.string$as-hash.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="42.47"
+             loc="Φ.org.eolang.string$as-hash.slice"
+             name="slice"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="string"
+          line="47"
+          loc="Φ.org.eolang.string$slice"
+          name="string$slice"
+          original-name="slice"
+          parent="string"
+          pos="2">
+         <o line="48"
+             loc="Φ.org.eolang.string$slice.start"
+             name="start"
+             pos="3"/>
+         <o line="48"
+             loc="Φ.org.eolang.string$slice.len"
+             name="len"
+             pos="9"/>
+         <o level="1"
+             line="47.30"
+             loc="Φ.org.eolang.string$slice.eq"
+             name="eq"/>
+         <o level="1"
+             line="47.36"
+             loc="Φ.org.eolang.string$slice.length"
+             name="length"/>
+         <o level="1"
+             line="47.39"
+             loc="Φ.org.eolang.string$slice.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="47.42"
+             loc="Φ.org.eolang.string$slice.as-hash"
+             name="as-hash"/>
+      </o>
+   </objects>
+</program>

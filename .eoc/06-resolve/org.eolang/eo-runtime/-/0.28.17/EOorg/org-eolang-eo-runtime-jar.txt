@@ -1,0 +1,6 @@
+Build Number: 4d3b9de
+Project Version: 0.28.17
+Build Date: 2023-01-15T07:04:21Z
+
+package-info.class: 111
+org-eolang-eo-strings-jar.txt: 138

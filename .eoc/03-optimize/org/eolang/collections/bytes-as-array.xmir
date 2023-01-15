@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program ms="8"
+          name="org.eolang.collections.bytes-as-array"
+          source="D:\Development\Java\Objectionary\hw\.eoc\04-pull\org\eolang\collections\bytes-as-array.eo"
+          time="2023-01-08T10:48:57.434453600Z"
+          version="0.28.16">
+   <listing># The MIT License (MIT)
+#
+# Copyright (c) 2016-2022 Yegor Bugayenko
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
++home https://github.com/objectionary/eo-collections
++package org.eolang.collections
++rt jvm org.eolang:eo-collections:0.0.6
++version 0.0.6
+
+[b] &gt; bytes-as-array
+  slice-byte &gt; @
+    *
+    0
+  [a i] &gt; slice-byte
+    if. &gt; @
+      i.lt
+        b.size
+      ^.slice-byte
+        a.with (b.slice i 1)
+        i.plus 1
+      a
+</listing>
+   <errors/>
+   <sheets>
+      <sheet>not-empty-atoms</sheet>
+      <sheet>middle-varargs</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>many-free-attributes</sheet>
+      <sheet>broken-aliases</sheet>
+      <sheet>duplicate-aliases</sheet>
+      <sheet>global-nonames</sheet>
+      <sheet>same-line-names</sheet>
+      <sheet>self-naming</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>wrap-method-calls</sheet>
+      <sheet>expand-qqs</sheet>
+      <sheet>add-probes</sheet>
+      <sheet>vars-float-up</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>unsorted-metas</sheet>
+      <sheet>incorrect-architect</sheet>
+      <sheet>expand-aliases</sheet>
+      <sheet>resolve-aliases</sheet>
+      <sheet>synthetic-references</sheet>
+      <sheet>add-default-package</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>unknown-names</sheet>
+      <sheet>noname-attributes</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>duplicate-metas</sheet>
+      <sheet>mandatory-package-meta</sheet>
+      <sheet>correct-package-meta</sheet>
+      <sheet>unused-aliases</sheet>
+      <sheet>data-objects</sheet>
+      <sheet>unit-test-without-phi</sheet>
+      <sheet>set-locators</sheet>
+      <sheet>globals-to-abstracts</sheet>
+      <sheet>remove-refs</sheet>
+      <sheet>abstracts-float-up</sheet>
+      <sheet>remove-levels</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>fix-missed-names</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>constant-folding</sheet>
+      <sheet>set-locators</sheet>
+   </sheets>
+   <license>The MIT License (MIT)
+
+Copyright (c) 2016-2022 Yegor Bugayenko
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</license>
+   <metas>
+      <meta line="23">
+         <head>home</head>
+         <tail>https://github.com/objectionary/eo-collections</tail>
+         <part>https://github.com/objectionary/eo-collections</part>
+      </meta>
+      <meta line="24">
+         <head>package</head>
+         <tail>org.eolang.collections</tail>
+         <part>org.eolang.collections</part>
+      </meta>
+      <meta line="25">
+         <head>rt</head>
+         <tail>jvm org.eolang:eo-collections:0.0.6</tail>
+         <part>jvm</part>
+         <part>org.eolang:eo-collections:0.0.6</part>
+      </meta>
+      <meta line="26">
+         <head>version</head>
+         <tail>0.0.6</tail>
+         <part>0.0.6</part>
+      </meta>
+      <meta line="33">
+         <head>probe</head>
+         <tail>i.lt.if</tail>
+         <part>i.lt.if</part>
+      </meta>
+      <meta line="34">
+         <head>probe</head>
+         <tail>i.lt</tail>
+         <part>i.lt</part>
+      </meta>
+      <meta line="35">
+         <head>probe</head>
+         <tail>b.size</tail>
+         <part>b.size</part>
+      </meta>
+      <meta line="36">
+         <head>probe</head>
+         <tail>^.slice-byte</tail>
+         <part>^.slice-byte</part>
+      </meta>
+      <meta line="37">
+         <head>probe</head>
+         <tail>a.with</tail>
+         <part>a.with</part>
+      </meta>
+      <meta line="37">
+         <head>probe</head>
+         <tail>b.slice</tail>
+         <part>b.slice</part>
+      </meta>
+      <meta line="38">
+         <head>probe</head>
+         <tail>i.plus</tail>
+         <part>i.plus</part>
+      </meta>
+   </metas>
+   <objects>
+      <o abstract=""
+          line="28"
+          loc="Φ.org.eolang.collections.bytes-as-array"
+          name="bytes-as-array"
+          original-name="bytes-as-array"
+          pos="0">
+         <o line="28"
+             loc="Φ.org.eolang.collections.bytes-as-array.b"
+             name="b"
+             pos="1"/>
+         <o base="slice-byte"
+             line="29"
+             loc="Φ.org.eolang.collections.bytes-as-array.φ"
+             name="@"
+             pos="2"
+             ref="32">
+            <o base="org.eolang.array"
+                data="array"
+                line="30"
+                loc="Φ.org.eolang.collections.bytes-as-array.φ.α0"
+                pos="4"/>
+            <o base="org.eolang.int"
+                data="bytes"
+                line="31"
+                loc="Φ.org.eolang.collections.bytes-as-array.φ.α1"
+                pos="4">00 00 00 00 00 00 00 00</o>
+         </o>
+         <o abstract=""
+             base="bytes-as-array$slice-byte"
+             cut="4"
+             line="32"
+             loc="Φ.org.eolang.collections.bytes-as-array.slice-byte"
+             name="slice-byte"
+             pos="2"
+             ref="32">
+            <o as="b"
+                base="b"
+                level="1"
+                loc="Φ.org.eolang.collections.bytes-as-array.slice-byte.α0"
+                ref="28"/>
+            <o as="@"
+                base="@"
+                level="1"
+                loc="Φ.org.eolang.collections.bytes-as-array.slice-byte.α1"
+                ref="29"/>
+         </o>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="32"
+          loc="Φ.org.eolang.collections.bytes-as-array$slice-byte"
+          name="bytes-as-array$slice-byte"
+          original-name="slice-byte"
+          parent="bytes-as-array"
+          pos="2">
+         <o line="32"
+             loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.a"
+             name="a"
+             pos="3"/>
+         <o line="32"
+             loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.i"
+             name="i"
+             pos="5"/>
+         <o base=".if"
+             line="33"
+             loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ"
+             name="@"
+             pos="4">
+            <o base=".lt"
+                line="34"
+                loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ"
+                pos="7">
+               <o base="i"
+                   line="34"
+                   loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ"
+                   pos="6"
+                   ref="32"/>
+               <o base=".size"
+                   line="35"
+                   loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ"
+                   pos="9">
+                  <o base="b"
+                      line="35"
+                      loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ"
+                      pos="8"
+                      ref="32.28"/>
+               </o>
+            </o>
+            <o base=".slice-byte"
+                line="36"
+                loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ"
+                pos="7">
+               <o base="^"
+                   line="36"
+                   loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ"
+                   pos="6"/>
+               <o base=".with"
+                   line="37"
+                   loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ"
+                   pos="9">
+                  <o base="a"
+                      line="37"
+                      loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ"
+                      pos="8"
+                      ref="32"/>
+                  <o base=".slice"
+                      line="37"
+                      loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ"
+                      pos="17">
+                     <o base="b"
+                         line="37"
+                         loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ.ρ"
+                         pos="16"
+                         ref="32.28"/>
+                     <o base="i"
+                         line="37"
+                         loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ.ρ"
+                         pos="24"
+                         ref="32"/>
+                     <o base="org.eolang.int"
+                         data="bytes"
+                         line="37"
+                         loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ.ρ"
+                         pos="26">00 00 00 00 00 00 00 01</o>
+                  </o>
+               </o>
+               <o base=".plus"
+                   line="38"
+                   loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ"
+                   pos="9">
+                  <o base="i"
+                      line="38"
+                      loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ"
+                      pos="8"
+                      ref="32"/>
+                  <o base="org.eolang.int"
+                      data="bytes"
+                      line="38"
+                      loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ.ρ.ρ"
+                      pos="15">00 00 00 00 00 00 00 01</o>
+               </o>
+            </o>
+            <o base="a"
+                line="39"
+                loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.φ.ρ"
+                pos="6"
+                ref="32"/>
+         </o>
+         <o level="1"
+             line="32.28"
+             loc="Φ.org.eolang.collections.bytes-as-array$slice-byte.b"
+             name="b"/>
+      </o>
+   </objects>
+</program>

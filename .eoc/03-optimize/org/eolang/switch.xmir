@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program ms="20"
+          name="org.eolang.switch"
+          source="D:\Development\Java\Objectionary\hw\.eoc\04-pull\org\eolang\switch.eo"
+          time="2023-01-08T10:48:50.410084Z"
+          version="0.28.16">
+   <listing># The MIT License (MIT)
+#
+#  2016-2022 Objectionary.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
++alias org.eolang.collections.list
++architect yegor256@gmail.com
++home https://github.com/objectionary/eo
++package org.eolang
++rt jvm org.eolang:eo-runtime:0.28.14
++version 0.28.14
+
+# Allow to choose right options according to cases conditions.
+# Parameter cases is the array of two dimensional array, which
+# consist of condition bool value and expected value, if this
+# condition is TRUE.
+# e.g.
+# switch
+#   *
+#     TRUE
+#     "this value will be returned"
+#   *
+#     FALSE
+#     "this value will be skipped"
+#
+# This object returns value of only first truly statement.
+[cases...] &gt; switch
+  if. &gt; @
+    not.
+      eq.
+        cases.length
+        0
+    if.
+      gt.
+        length.
+          [] &gt; arr
+            reduced. &gt; @
+              list
+                cases
+              *
+              [acc case]
+                if. &gt; @
+                  case.at 0
+                  acc.with (case.at 1)
+                  acc
+        0
+      arr.at 0
+      TRUE
+    error "switch cases are empty"
+</listing>
+   <errors/>
+   <sheets>
+      <sheet>not-empty-atoms</sheet>
+      <sheet>middle-varargs</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>many-free-attributes</sheet>
+      <sheet>broken-aliases</sheet>
+      <sheet>duplicate-aliases</sheet>
+      <sheet>global-nonames</sheet>
+      <sheet>same-line-names</sheet>
+      <sheet>self-naming</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>wrap-method-calls</sheet>
+      <sheet>expand-qqs</sheet>
+      <sheet>add-probes</sheet>
+      <sheet>vars-float-up</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>unsorted-metas</sheet>
+      <sheet>incorrect-architect</sheet>
+      <sheet>expand-aliases</sheet>
+      <sheet>resolve-aliases</sheet>
+      <sheet>synthetic-references</sheet>
+      <sheet>add-default-package</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>unknown-names</sheet>
+      <sheet>noname-attributes</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>duplicate-metas</sheet>
+      <sheet>mandatory-package-meta</sheet>
+      <sheet>correct-package-meta</sheet>
+      <sheet>unused-aliases</sheet>
+      <sheet>data-objects</sheet>
+      <sheet>unit-test-without-phi</sheet>
+      <sheet>set-locators</sheet>
+      <sheet>globals-to-abstracts</sheet>
+      <sheet>remove-refs</sheet>
+      <sheet>abstracts-float-up</sheet>
+      <sheet>remove-levels</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>fix-missed-names</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>constant-folding</sheet>
+      <sheet>set-locators</sheet>
+   </sheets>
+   <license>The MIT License (MIT)
+
+2016-2022 Objectionary.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</license>
+   <metas>
+      <meta expanded="" line="23">
+         <head>alias</head>
+         <tail>list org.eolang.collections.list</tail>
+         <part>list</part>
+         <part>org.eolang.collections.list</part>
+      </meta>
+      <meta line="24">
+         <head>architect</head>
+         <tail>yegor256@gmail.com</tail>
+         <part>yegor256@gmail.com</part>
+      </meta>
+      <meta line="25">
+         <head>home</head>
+         <tail>https://github.com/objectionary/eo</tail>
+         <part>https://github.com/objectionary/eo</part>
+      </meta>
+      <meta line="26">
+         <head>package</head>
+         <tail>org.eolang</tail>
+         <part>org.eolang</part>
+      </meta>
+      <meta line="27">
+         <head>rt</head>
+         <tail>jvm org.eolang:eo-runtime:0.28.14</tail>
+         <part>jvm</part>
+         <part>org.eolang:eo-runtime:0.28.14</part>
+      </meta>
+      <meta line="28">
+         <head>version</head>
+         <tail>0.28.14</tail>
+         <part>0.28.14</part>
+      </meta>
+      <meta line="45">
+         <head>probe</head>
+         <tail>cases.length.eq.not.if</tail>
+         <part>cases.length.eq.not.if</part>
+      </meta>
+      <meta line="46">
+         <head>probe</head>
+         <tail>cases.length.eq.not</tail>
+         <part>cases.length.eq.not</part>
+      </meta>
+      <meta line="47">
+         <head>probe</head>
+         <tail>cases.length.eq</tail>
+         <part>cases.length.eq</part>
+      </meta>
+      <meta line="48">
+         <head>probe</head>
+         <tail>cases.length</tail>
+         <part>cases.length</part>
+      </meta>
+      <meta line="50">
+         <head>probe</head>
+         <tail>.length.gt.if</tail>
+         <part>.length.gt.if</part>
+      </meta>
+      <meta line="51">
+         <head>probe</head>
+         <tail>.length.gt</tail>
+         <part>.length.gt</part>
+      </meta>
+      <meta line="52">
+         <head>probe</head>
+         <tail>.length</tail>
+         <part>.length</part>
+      </meta>
+      <meta line="54">
+         <head>probe</head>
+         <tail>list.reduced</tail>
+         <part>list.reduced</part>
+      </meta>
+      <meta line="59">
+         <head>probe</head>
+         <tail>case.at.if</tail>
+         <part>case.at.if</part>
+      </meta>
+      <meta line="61">
+         <head>probe</head>
+         <tail>acc.with</tail>
+         <part>acc.with</part>
+      </meta>
+      <meta line="61">
+         <head>probe</head>
+         <tail>case.at</tail>
+         <part>case.at</part>
+      </meta>
+      <meta line="64">
+         <head>probe</head>
+         <tail>arr.at</tail>
+         <part>arr.at</part>
+      </meta>
+   </metas>
+   <objects>
+      <o abstract=""
+          line="44"
+          loc="Φ.org.eolang.switch"
+          name="switch"
+          original-name="switch"
+          pos="0">
+         <o line="44"
+             loc="Φ.org.eolang.switch.cases"
+             name="cases"
+             pos="1"
+             vararg=""/>
+         <o base=".if"
+             line="45"
+             loc="Φ.org.eolang.switch.φ"
+             name="@"
+             pos="2">
+            <o base=".not" line="46" loc="Φ.org.eolang.switch.φ.ρ" pos="4">
+               <o base=".eq" line="47" loc="Φ.org.eolang.switch.φ.ρ.ρ" pos="6">
+                  <o base=".length"
+                      line="48"
+                      loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ"
+                      pos="13">
+                     <o base="cases"
+                         line="48"
+                         loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ.ρ"
+                         pos="8"
+                         ref="44"/>
+                  </o>
+                  <o base="org.eolang.int"
+                      data="bytes"
+                      line="49"
+                      loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ"
+                      pos="8">00 00 00 00 00 00 00 00</o>
+               </o>
+            </o>
+            <o base=".if" line="50" loc="Φ.org.eolang.switch.φ.ρ" pos="4">
+               <o base=".gt" line="51" loc="Φ.org.eolang.switch.φ.ρ.ρ" pos="6">
+                  <o base=".length"
+                      line="52"
+                      loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ"
+                      pos="8">
+                     <o base="arr"
+                         cut="17"
+                         line="53"
+                         loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ.ρ"
+                         ref="53"/>
+                  </o>
+                  <o base="org.eolang.int"
+                      data="bytes"
+                      line="63"
+                      loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ"
+                      pos="8">00 00 00 00 00 00 00 00</o>
+               </o>
+               <o base=".at" line="64" loc="Φ.org.eolang.switch.φ.ρ.ρ" pos="9">
+                  <o base="arr"
+                      line="64"
+                      loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ"
+                      pos="6"
+                      ref="53"/>
+                  <o base="org.eolang.int"
+                      data="bytes"
+                      line="64"
+                      loc="Φ.org.eolang.switch.φ.ρ.ρ.ρ"
+                      pos="13">00 00 00 00 00 00 00 00</o>
+               </o>
+               <o base="org.eolang.bool"
+                   data="bytes"
+                   line="65"
+                   loc="Φ.org.eolang.switch.φ.ρ.ρ"
+                   pos="6">01</o>
+            </o>
+            <o base="org.eolang.error"
+                line="66"
+                loc="Φ.org.eolang.switch.φ.ρ"
+                pos="4">
+               <o base="org.eolang.string"
+                   data="bytes"
+                   line="66"
+                   loc="Φ.org.eolang.switch.φ.ρ.α0"
+                   pos="10">73 77 69 74 63 68 20 63 61 73 65 73 20 61 72 65 20 65 6D 70 74 79</o>
+            </o>
+         </o>
+         <o abstract=""
+             base="switch$arr"
+             cut="18"
+             line="53"
+             loc="Φ.org.eolang.switch.arr"
+             name="arr"
+             pos="10"
+             ref="53">
+            <o as="cases"
+                base="cases"
+                level="1"
+                loc="Φ.org.eolang.switch.arr.α0"
+                ref="44"/>
+            <o as="@"
+                base="@"
+                level="1"
+                loc="Φ.org.eolang.switch.arr.α1"
+                ref="45"/>
+         </o>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="53"
+          loc="Φ.org.eolang.switch$arr"
+          name="switch$arr"
+          original-name="arr"
+          parent="switch"
+          pos="10">
+         <o base=".reduced"
+             line="54"
+             loc="Φ.org.eolang.switch$arr.φ"
+             name="@"
+             pos="12">
+            <o base="org.eolang.collections.list"
+                line="55"
+                loc="Φ.org.eolang.switch$arr.φ.ρ"
+                pos="14">
+               <o base="cases"
+                   line="56"
+                   loc="Φ.org.eolang.switch$arr.φ.ρ.α0"
+                   pos="16"
+                   ref="53.44"/>
+            </o>
+            <o base="org.eolang.array"
+                data="array"
+                line="57"
+                loc="Φ.org.eolang.switch$arr.φ.ρ"
+                pos="14"/>
+            <o abstract=""
+                base="switch$arr$t0$a2"
+                cut="21"
+                line="58"
+                loc="Φ.org.eolang.switch$arr.φ.ρ"
+                pos="14"
+                ref="58">
+               <o as="cases"
+                   base="cases"
+                   level="2"
+                   loc="Φ.org.eolang.switch$arr.φ.ρ.α0"
+                   ref="53.44"/>
+               <o as="@"
+                   base="@"
+                   level="2"
+                   loc="Φ.org.eolang.switch$arr.φ.ρ.α1"
+                   ref="54"/>
+            </o>
+         </o>
+         <o level="1"
+             line="53.44"
+             loc="Φ.org.eolang.switch$arr.cases"
+             name="cases"/>
+      </o>
+      <o abstract=""
+          ancestors="2"
+          line="58"
+          loc="Φ.org.eolang.switch$arr$t0$a2"
+          name="switch$arr$t0$a2"
+          parent="switch$arr"
+          pos="14">
+         <o line="58"
+             loc="Φ.org.eolang.switch$arr$t0$a2.acc"
+             name="acc"
+             pos="15"/>
+         <o line="58"
+             loc="Φ.org.eolang.switch$arr$t0$a2.case"
+             name="case"
+             pos="19"/>
+         <o base=".if"
+             line="59"
+             loc="Φ.org.eolang.switch$arr$t0$a2.φ"
+             name="@"
+             pos="16">
+            <o base=".at"
+                line="60"
+                loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ"
+                pos="22">
+               <o base="case"
+                   line="60"
+                   loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ.ρ"
+                   pos="18"
+                   ref="58"/>
+               <o base="org.eolang.int"
+                   data="bytes"
+                   line="60"
+                   loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ.ρ"
+                   pos="26">00 00 00 00 00 00 00 00</o>
+            </o>
+            <o base=".with"
+                line="61"
+                loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ"
+                pos="21">
+               <o base="acc"
+                   line="61"
+                   loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ.ρ"
+                   pos="18"
+                   ref="58"/>
+               <o base=".at"
+                   line="61"
+                   loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ.ρ"
+                   pos="32">
+                  <o base="case"
+                      line="61"
+                      loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ.ρ.ρ"
+                      pos="28"
+                      ref="58"/>
+                  <o base="org.eolang.int"
+                      data="bytes"
+                      line="61"
+                      loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ.ρ.ρ"
+                      pos="36">00 00 00 00 00 00 00 01</o>
+               </o>
+            </o>
+            <o base="acc"
+                line="62"
+                loc="Φ.org.eolang.switch$arr$t0$a2.φ.ρ"
+                pos="18"
+                ref="58"/>
+         </o>
+         <o level="2"
+             line="58.44"
+             loc="Φ.org.eolang.switch$arr$t0$a2.cases"
+             name="cases"/>
+      </o>
+   </objects>
+</program>

@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program ms="18"
+          name="org.eolang.bool"
+          source="D:\Development\Java\Objectionary\hw\.eoc\04-pull\org\eolang\bool.eo"
+          time="2023-01-08T10:48:50.263350200Z"
+          version="0.28.16">
+   <listing># The MIT License (MIT)
+#
+# Copyright (c) 2016-2022 Objectionary.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
++architect yegor256@gmail.com
++home https://github.com/objectionary/eo
++package org.eolang
++rt jvm org.eolang:eo-runtime:0.28.14
++version 0.28.14
+
+[] &gt; bool
+  # Equal to another object?
+  [x] &gt; eq
+    eq. &gt; @
+      ^.as-bytes
+      x.as-bytes
+
+  # If true, return "t", otherwise "f"
+  [t f] &gt; if /t
+
+  # NOT
+  [] &gt; not
+    eq. &gt; @
+      ^
+      FALSE
+
+  # AND
+  [x...] &gt; and /bool
+
+  # OR
+  [x...] &gt; or /bool
+
+  # While this is true copies the object
+  # with "i" as the position of the cycle. The result
+  # of WHILE is the last dataized object or FALSE if
+  # ^ condition was never TRUE. The \rho of the object
+  # copied will be set to "while.\rho".
+  [f] &gt; while /int
+
+  # Converts this to bytes
+  [] &gt; as-bytes
+    if. &gt; @
+      ^
+      01-
+      00-
+
+  # Converts this to hash
+  [] &gt; as-hash
+    if. &gt; @
+      ^
+      1231
+      1237
+</listing>
+   <errors/>
+   <sheets>
+      <sheet>not-empty-atoms</sheet>
+      <sheet>middle-varargs</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>many-free-attributes</sheet>
+      <sheet>broken-aliases</sheet>
+      <sheet>duplicate-aliases</sheet>
+      <sheet>global-nonames</sheet>
+      <sheet>same-line-names</sheet>
+      <sheet>self-naming</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>wrap-method-calls</sheet>
+      <sheet>expand-qqs</sheet>
+      <sheet>add-probes</sheet>
+      <sheet>vars-float-up</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>unsorted-metas</sheet>
+      <sheet>incorrect-architect</sheet>
+      <sheet>expand-aliases</sheet>
+      <sheet>resolve-aliases</sheet>
+      <sheet>synthetic-references</sheet>
+      <sheet>add-default-package</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>unknown-names</sheet>
+      <sheet>noname-attributes</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>duplicate-metas</sheet>
+      <sheet>mandatory-package-meta</sheet>
+      <sheet>correct-package-meta</sheet>
+      <sheet>unused-aliases</sheet>
+      <sheet>data-objects</sheet>
+      <sheet>unit-test-without-phi</sheet>
+      <sheet>set-locators</sheet>
+      <sheet>globals-to-abstracts</sheet>
+      <sheet>remove-refs</sheet>
+      <sheet>abstracts-float-up</sheet>
+      <sheet>remove-levels</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>fix-missed-names</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>constant-folding</sheet>
+      <sheet>set-locators</sheet>
+   </sheets>
+   <license>The MIT License (MIT)
+
+Copyright (c) 2016-2022 Objectionary.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</license>
+   <metas>
+      <meta line="23">
+         <head>architect</head>
+         <tail>yegor256@gmail.com</tail>
+         <part>yegor256@gmail.com</part>
+      </meta>
+      <meta line="24">
+         <head>home</head>
+         <tail>https://github.com/objectionary/eo</tail>
+         <part>https://github.com/objectionary/eo</part>
+      </meta>
+      <meta line="25">
+         <head>package</head>
+         <tail>org.eolang</tail>
+         <part>org.eolang</part>
+      </meta>
+      <meta line="26">
+         <head>rt</head>
+         <tail>jvm org.eolang:eo-runtime:0.28.14</tail>
+         <part>jvm</part>
+         <part>org.eolang:eo-runtime:0.28.14</part>
+      </meta>
+      <meta line="27">
+         <head>version</head>
+         <tail>0.28.14</tail>
+         <part>0.28.14</part>
+      </meta>
+      <meta line="32">
+         <head>probe</head>
+         <tail>^.as-bytes.eq</tail>
+         <part>^.as-bytes.eq</part>
+      </meta>
+      <meta line="33">
+         <head>probe</head>
+         <tail>^.as-bytes</tail>
+         <part>^.as-bytes</part>
+      </meta>
+      <meta line="34">
+         <head>probe</head>
+         <tail>x.as-bytes</tail>
+         <part>x.as-bytes</part>
+      </meta>
+      <meta line="41">
+         <head>probe</head>
+         <tail>^.eq</tail>
+         <part>^.eq</part>
+      </meta>
+      <meta line="67">
+         <head>probe</head>
+         <tail>^.if</tail>
+         <part>^.if</part>
+      </meta>
+   </metas>
+   <objects>
+      <o abstract=""
+          line="29"
+          loc="Φ.org.eolang.bool"
+          name="bool"
+          original-name="bool"
+          pos="0">
+         <o abstract=""
+             base="bool$eq"
+             cut="0"
+             line="30"
+             loc="Φ.org.eolang.bool.eq"
+             name="eq"
+             pos="2"
+             ref="30">
+            <o as="if"
+                base="if"
+                level="1"
+                loc="Φ.org.eolang.bool.eq.α0"
+                ref="36"/>
+            <o as="not"
+                base="not"
+                level="1"
+                loc="Φ.org.eolang.bool.eq.α1"
+                ref="39"/>
+            <o as="and"
+                base="and"
+                level="1"
+                loc="Φ.org.eolang.bool.eq.α2"
+                ref="45"/>
+            <o as="or"
+                base="or"
+                level="1"
+                loc="Φ.org.eolang.bool.eq.α3"
+                ref="48"/>
+            <o as="while"
+                base="while"
+                level="1"
+                loc="Φ.org.eolang.bool.eq.α4"
+                ref="51"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.bool.eq.α5"
+                ref="58"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.bool.eq.α6"
+                ref="65"/>
+         </o>
+         <o abstract=""
+             atom="t"
+             base="bool$if"
+             cut="7"
+             line="36"
+             loc="Φ.org.eolang.bool.if"
+             name="if"
+             pos="2"
+             ref="36">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.bool.if.α0"
+                ref="30"/>
+            <o as="not"
+                base="not"
+                level="1"
+                loc="Φ.org.eolang.bool.if.α1"
+                ref="39"/>
+            <o as="and"
+                base="and"
+                level="1"
+                loc="Φ.org.eolang.bool.if.α2"
+                ref="45"/>
+            <o as="or"
+                base="or"
+                level="1"
+                loc="Φ.org.eolang.bool.if.α3"
+                ref="48"/>
+            <o as="while"
+                base="while"
+                level="1"
+                loc="Φ.org.eolang.bool.if.α4"
+                ref="51"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.bool.if.α5"
+                ref="58"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.bool.if.α6"
+                ref="65"/>
+         </o>
+         <o abstract=""
+             base="bool$not"
+             cut="10"
+             line="39"
+             loc="Φ.org.eolang.bool.not"
+             name="not"
+             pos="2"
+             ref="39">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.bool.not.α0"
+                ref="30"/>
+            <o as="if"
+                base="if"
+                level="1"
+                loc="Φ.org.eolang.bool.not.α1"
+                ref="36"/>
+            <o as="and"
+                base="and"
+                level="1"
+                loc="Φ.org.eolang.bool.not.α2"
+                ref="45"/>
+            <o as="or"
+                base="or"
+                level="1"
+                loc="Φ.org.eolang.bool.not.α3"
+                ref="48"/>
+            <o as="while"
+                base="while"
+                level="1"
+                loc="Φ.org.eolang.bool.not.α4"
+                ref="51"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.bool.not.α5"
+                ref="58"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.bool.not.α6"
+                ref="65"/>
+         </o>
+         <o abstract=""
+             atom="bool"
+             base="bool$and"
+             cut="14"
+             line="45"
+             loc="Φ.org.eolang.bool.and"
+             name="and"
+             pos="2"
+             ref="45">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.bool.and.α0"
+                ref="30"/>
+            <o as="if"
+                base="if"
+                level="1"
+                loc="Φ.org.eolang.bool.and.α1"
+                ref="36"/>
+            <o as="not"
+                base="not"
+                level="1"
+                loc="Φ.org.eolang.bool.and.α2"
+                ref="39"/>
+            <o as="or"
+                base="or"
+                level="1"
+                loc="Φ.org.eolang.bool.and.α3"
+                ref="48"/>
+            <o as="while"
+                base="while"
+                level="1"
+                loc="Φ.org.eolang.bool.and.α4"
+                ref="51"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.bool.and.α5"
+                ref="58"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.bool.and.α6"
+                ref="65"/>
+         </o>
+         <o abstract=""
+             atom="bool"
+             base="bool$or"
+             cut="16"
+             line="48"
+             loc="Φ.org.eolang.bool.or"
+             name="or"
+             pos="2"
+             ref="48">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.bool.or.α0"
+                ref="30"/>
+            <o as="if"
+                base="if"
+                level="1"
+                loc="Φ.org.eolang.bool.or.α1"
+                ref="36"/>
+            <o as="not"
+                base="not"
+                level="1"
+                loc="Φ.org.eolang.bool.or.α2"
+                ref="39"/>
+            <o as="and"
+                base="and"
+                level="1"
+                loc="Φ.org.eolang.bool.or.α3"
+                ref="45"/>
+            <o as="while"
+                base="while"
+                level="1"
+                loc="Φ.org.eolang.bool.or.α4"
+                ref="51"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.bool.or.α5"
+                ref="58"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.bool.or.α6"
+                ref="65"/>
+         </o>
+         <o abstract=""
+             atom="int"
+             base="bool$while"
+             cut="18"
+             line="51"
+             loc="Φ.org.eolang.bool.while"
+             name="while"
+             pos="2"
+             ref="51">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.bool.while.α0"
+                ref="30"/>
+            <o as="if"
+                base="if"
+                level="1"
+                loc="Φ.org.eolang.bool.while.α1"
+                ref="36"/>
+            <o as="not"
+                base="not"
+                level="1"
+                loc="Φ.org.eolang.bool.while.α2"
+                ref="39"/>
+            <o as="and"
+                base="and"
+                level="1"
+                loc="Φ.org.eolang.bool.while.α3"
+                ref="45"/>
+            <o as="or"
+                base="or"
+                level="1"
+                loc="Φ.org.eolang.bool.while.α4"
+                ref="48"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.bool.while.α5"
+                ref="58"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.bool.while.α6"
+                ref="65"/>
+         </o>
+         <o abstract=""
+             base="bool$as-bytes"
+             cut="20"
+             line="58"
+             loc="Φ.org.eolang.bool.as-bytes"
+             name="as-bytes"
+             pos="2"
+             ref="58">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.bool.as-bytes.α0"
+                ref="30"/>
+            <o as="if"
+                base="if"
+                level="1"
+                loc="Φ.org.eolang.bool.as-bytes.α1"
+                ref="36"/>
+            <o as="not"
+                base="not"
+                level="1"
+                loc="Φ.org.eolang.bool.as-bytes.α2"
+                ref="39"/>
+            <o as="and"
+                base="and"
+                level="1"
+                loc="Φ.org.eolang.bool.as-bytes.α3"
+                ref="45"/>
+            <o as="or"
+                base="or"
+                level="1"
+                loc="Φ.org.eolang.bool.as-bytes.α4"
+                ref="48"/>
+            <o as="while"
+                base="while"
+                level="1"
+                loc="Φ.org.eolang.bool.as-bytes.α5"
+                ref="51"/>
+            <o as="as-hash"
+                base="as-hash"
+                level="1"
+                loc="Φ.org.eolang.bool.as-bytes.α6"
+                ref="65"/>
+         </o>
+         <o abstract=""
+             base="bool$as-hash"
+             cut="25"
+             line="65"
+             loc="Φ.org.eolang.bool.as-hash"
+             name="as-hash"
+             pos="2"
+             ref="65">
+            <o as="eq"
+                base="eq"
+                level="1"
+                loc="Φ.org.eolang.bool.as-hash.α0"
+                ref="30"/>
+            <o as="if"
+                base="if"
+                level="1"
+                loc="Φ.org.eolang.bool.as-hash.α1"
+                ref="36"/>
+            <o as="not"
+                base="not"
+                level="1"
+                loc="Φ.org.eolang.bool.as-hash.α2"
+                ref="39"/>
+            <o as="and"
+                base="and"
+                level="1"
+                loc="Φ.org.eolang.bool.as-hash.α3"
+                ref="45"/>
+            <o as="or"
+                base="or"
+                level="1"
+                loc="Φ.org.eolang.bool.as-hash.α4"
+                ref="48"/>
+            <o as="while"
+                base="while"
+                level="1"
+                loc="Φ.org.eolang.bool.as-hash.α5"
+                ref="51"/>
+            <o as="as-bytes"
+                base="as-bytes"
+                level="1"
+                loc="Φ.org.eolang.bool.as-hash.α6"
+                ref="58"/>
+         </o>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="30"
+          loc="Φ.org.eolang.bool$eq"
+          name="bool$eq"
+          original-name="eq"
+          parent="bool"
+          pos="2">
+         <o line="31" loc="Φ.org.eolang.bool$eq.x" name="x" pos="3"/>
+         <o base=".eq"
+             line="32"
+             loc="Φ.org.eolang.bool$eq.φ"
+             name="@"
+             pos="4">
+            <o base=".as-bytes"
+                line="33"
+                loc="Φ.org.eolang.bool$eq.φ.ρ"
+                pos="7">
+               <o base="^" line="33" loc="Φ.org.eolang.bool$eq.φ.ρ.ρ" pos="6"/>
+            </o>
+            <o base=".as-bytes"
+                line="34"
+                loc="Φ.org.eolang.bool$eq.φ.ρ"
+                pos="7">
+               <o base="x"
+                   line="34"
+                   loc="Φ.org.eolang.bool$eq.φ.ρ.ρ"
+                   pos="6"
+                   ref="31"/>
+            </o>
+         </o>
+         <o level="1" line="30.36" loc="Φ.org.eolang.bool$eq.if" name="if"/>
+         <o level="1"
+             line="30.39"
+             loc="Φ.org.eolang.bool$eq.not"
+             name="not"/>
+         <o level="1"
+             line="30.45"
+             loc="Φ.org.eolang.bool$eq.and"
+             name="and"/>
+         <o level="1" line="30.48" loc="Φ.org.eolang.bool$eq.or" name="or"/>
+         <o level="1"
+             line="30.51"
+             loc="Φ.org.eolang.bool$eq.while"
+             name="while"/>
+         <o level="1"
+             line="30.58"
+             loc="Φ.org.eolang.bool$eq.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="30.65"
+             loc="Φ.org.eolang.bool$eq.as-hash"
+             name="as-hash"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="t"
+          line="36"
+          loc="Φ.org.eolang.bool$if"
+          name="bool$if"
+          original-name="if"
+          parent="bool"
+          pos="2">
+         <o line="37" loc="Φ.org.eolang.bool$if.t" name="t" pos="3"/>
+         <o line="37" loc="Φ.org.eolang.bool$if.f" name="f" pos="5"/>
+         <o level="1" line="36.30" loc="Φ.org.eolang.bool$if.eq" name="eq"/>
+         <o level="1"
+             line="36.39"
+             loc="Φ.org.eolang.bool$if.not"
+             name="not"/>
+         <o level="1"
+             line="36.45"
+             loc="Φ.org.eolang.bool$if.and"
+             name="and"/>
+         <o level="1" line="36.48" loc="Φ.org.eolang.bool$if.or" name="or"/>
+         <o level="1"
+             line="36.51"
+             loc="Φ.org.eolang.bool$if.while"
+             name="while"/>
+         <o level="1"
+             line="36.58"
+             loc="Φ.org.eolang.bool$if.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="36.65"
+             loc="Φ.org.eolang.bool$if.as-hash"
+             name="as-hash"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="39"
+          loc="Φ.org.eolang.bool$not"
+          name="bool$not"
+          original-name="not"
+          parent="bool"
+          pos="2">
+         <o base=".eq"
+             line="41"
+             loc="Φ.org.eolang.bool$not.φ"
+             name="@"
+             pos="4">
+            <o base="^" line="42" loc="Φ.org.eolang.bool$not.φ.ρ" pos="6"/>
+            <o base="bool"
+                data="bytes"
+                line="43"
+                loc="Φ.org.eolang.bool$not.φ.ρ"
+                pos="6"
+                ref="29">00</o>
+         </o>
+         <o level="1" line="39.30" loc="Φ.org.eolang.bool$not.eq" name="eq"/>
+         <o level="1" line="39.36" loc="Φ.org.eolang.bool$not.if" name="if"/>
+         <o level="1"
+             line="39.45"
+             loc="Φ.org.eolang.bool$not.and"
+             name="and"/>
+         <o level="1" line="39.48" loc="Φ.org.eolang.bool$not.or" name="or"/>
+         <o level="1"
+             line="39.51"
+             loc="Φ.org.eolang.bool$not.while"
+             name="while"/>
+         <o level="1"
+             line="39.58"
+             loc="Φ.org.eolang.bool$not.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="39.65"
+             loc="Φ.org.eolang.bool$not.as-hash"
+             name="as-hash"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="bool"
+          line="45"
+          loc="Φ.org.eolang.bool$and"
+          name="bool$and"
+          original-name="and"
+          parent="bool"
+          pos="2">
+         <o line="46"
+             loc="Φ.org.eolang.bool$and.x"
+             name="x"
+             pos="3"
+             vararg=""/>
+         <o level="1" line="45.30" loc="Φ.org.eolang.bool$and.eq" name="eq"/>
+         <o level="1" line="45.36" loc="Φ.org.eolang.bool$and.if" name="if"/>
+         <o level="1"
+             line="45.39"
+             loc="Φ.org.eolang.bool$and.not"
+             name="not"/>
+         <o level="1" line="45.48" loc="Φ.org.eolang.bool$and.or" name="or"/>
+         <o level="1"
+             line="45.51"
+             loc="Φ.org.eolang.bool$and.while"
+             name="while"/>
+         <o level="1"
+             line="45.58"
+             loc="Φ.org.eolang.bool$and.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="45.65"
+             loc="Φ.org.eolang.bool$and.as-hash"
+             name="as-hash"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="bool"
+          line="48"
+          loc="Φ.org.eolang.bool$or"
+          name="bool$or"
+          original-name="or"
+          parent="bool"
+          pos="2">
+         <o line="49"
+             loc="Φ.org.eolang.bool$or.x"
+             name="x"
+             pos="3"
+             vararg=""/>
+         <o level="1" line="48.30" loc="Φ.org.eolang.bool$or.eq" name="eq"/>
+         <o level="1" line="48.36" loc="Φ.org.eolang.bool$or.if" name="if"/>
+         <o level="1"
+             line="48.39"
+             loc="Φ.org.eolang.bool$or.not"
+             name="not"/>
+         <o level="1"
+             line="48.45"
+             loc="Φ.org.eolang.bool$or.and"
+             name="and"/>
+         <o level="1"
+             line="48.51"
+             loc="Φ.org.eolang.bool$or.while"
+             name="while"/>
+         <o level="1"
+             line="48.58"
+             loc="Φ.org.eolang.bool$or.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="48.65"
+             loc="Φ.org.eolang.bool$or.as-hash"
+             name="as-hash"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="int"
+          line="51"
+          loc="Φ.org.eolang.bool$while"
+          name="bool$while"
+          original-name="while"
+          parent="bool"
+          pos="2">
+         <o line="56" loc="Φ.org.eolang.bool$while.f" name="f" pos="3"/>
+         <o level="1"
+             line="51.30"
+             loc="Φ.org.eolang.bool$while.eq"
+             name="eq"/>
+         <o level="1"
+             line="51.36"
+             loc="Φ.org.eolang.bool$while.if"
+             name="if"/>
+         <o level="1"
+             line="51.39"
+             loc="Φ.org.eolang.bool$while.not"
+             name="not"/>
+         <o level="1"
+             line="51.45"
+             loc="Φ.org.eolang.bool$while.and"
+             name="and"/>
+         <o level="1"
+             line="51.48"
+             loc="Φ.org.eolang.bool$while.or"
+             name="or"/>
+         <o level="1"
+             line="51.58"
+             loc="Φ.org.eolang.bool$while.as-bytes"
+             name="as-bytes"/>
+         <o level="1"
+             line="51.65"
+             loc="Φ.org.eolang.bool$while.as-hash"
+             name="as-hash"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="58"
+          loc="Φ.org.eolang.bool$as-bytes"
+          name="bool$as-bytes"
+          original-name="as-bytes"
+          parent="bool"
+          pos="2">
+         <o base=".if"
+             line="60"
+             loc="Φ.org.eolang.bool$as-bytes.φ"
+             name="@"
+             pos="4">
+            <o base="^" line="61" loc="Φ.org.eolang.bool$as-bytes.φ.ρ" pos="6"/>
+            <o base="org.eolang.bytes"
+                data="bytes"
+                line="62"
+                loc="Φ.org.eolang.bool$as-bytes.φ.ρ"
+                pos="6">01</o>
+            <o base="org.eolang.bytes"
+                data="bytes"
+                line="63"
+                loc="Φ.org.eolang.bool$as-bytes.φ.ρ"
+                pos="6">00</o>
+         </o>
+         <o level="1"
+             line="58.30"
+             loc="Φ.org.eolang.bool$as-bytes.eq"
+             name="eq"/>
+         <o level="1"
+             line="58.36"
+             loc="Φ.org.eolang.bool$as-bytes.if"
+             name="if"/>
+         <o level="1"
+             line="58.39"
+             loc="Φ.org.eolang.bool$as-bytes.not"
+             name="not"/>
+         <o level="1"
+             line="58.45"
+             loc="Φ.org.eolang.bool$as-bytes.and"
+             name="and"/>
+         <o level="1"
+             line="58.48"
+             loc="Φ.org.eolang.bool$as-bytes.or"
+             name="or"/>
+         <o level="1"
+             line="58.51"
+             loc="Φ.org.eolang.bool$as-bytes.while"
+             name="while"/>
+         <o level="1"
+             line="58.65"
+             loc="Φ.org.eolang.bool$as-bytes.as-hash"
+             name="as-hash"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="65"
+          loc="Φ.org.eolang.bool$as-hash"
+          name="bool$as-hash"
+          original-name="as-hash"
+          parent="bool"
+          pos="2">
+         <o base=".if"
+             line="67"
+             loc="Φ.org.eolang.bool$as-hash.φ"
+             name="@"
+             pos="4">
+            <o base="^" line="68" loc="Φ.org.eolang.bool$as-hash.φ.ρ" pos="6"/>
+            <o base="org.eolang.int"
+                data="bytes"
+                line="69"
+                loc="Φ.org.eolang.bool$as-hash.φ.ρ"
+                pos="6">00 00 00 00 00 00 04 CF</o>
+            <o base="org.eolang.int"
+                data="bytes"
+                line="70"
+                loc="Φ.org.eolang.bool$as-hash.φ.ρ"
+                pos="6">00 00 00 00 00 00 04 D5</o>
+         </o>
+         <o level="1"
+             line="65.30"
+             loc="Φ.org.eolang.bool$as-hash.eq"
+             name="eq"/>
+         <o level="1"
+             line="65.36"
+             loc="Φ.org.eolang.bool$as-hash.if"
+             name="if"/>
+         <o level="1"
+             line="65.39"
+             loc="Φ.org.eolang.bool$as-hash.not"
+             name="not"/>
+         <o level="1"
+             line="65.45"
+             loc="Φ.org.eolang.bool$as-hash.and"
+             name="and"/>
+         <o level="1"
+             line="65.48"
+             loc="Φ.org.eolang.bool$as-hash.or"
+             name="or"/>
+         <o level="1"
+             line="65.51"
+             loc="Φ.org.eolang.bool$as-hash.while"
+             name="while"/>
+         <o level="1"
+             line="65.58"
+             loc="Φ.org.eolang.bool$as-hash.as-bytes"
+             name="as-bytes"/>
+      </o>
+   </objects>
+</program>

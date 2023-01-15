@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program ms="68"
+          name="org.eolang.heap"
+          source="D:\Development\Java\Objectionary\hw\.eoc\04-pull\org\eolang\heap.eo"
+          time="2023-01-08T10:48:50.304931100Z"
+          version="0.28.16">
+   <listing># The MIT License (MIT)
+#
+#  2016-2022 Objectionary.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
++architect yegor256@gmail.com
++home https://github.com/objectionary/eo
++package org.eolang
++rt jvm org.eolang:eo-runtime:0.28.14
++version 0.28.14
+
+# Emulation of random-access memory (RAM).
+[size] &gt; heap
+
+  # Allocates a block in memory of "s" bytes,
+  # and returns a pointer to it.
+  # The "length" attribute of the pointer won't be bound.
+  [s] &gt; malloc /pointer
+
+  # Freed a block in memory, which is referred by the
+  # given pointer, which was earlier obtained with malloc().
+  # Returns TRUE if works. If the pointer provided wasn't
+  # previously allocated, the result will be [].
+  [p] &gt; free /bool
+
+  # Pointer inside the heap
+  [address length] &gt; pointer
+    address &gt; @
+
+    # Increment this pointer by x steps forward
+    [x] &gt; add
+      &amp;.^.pointer &gt; @
+        address.plus
+          length.times x
+        length
+
+    # Decrement this pointer by x steps backward
+    [x] &gt; sub
+      &amp;.add &gt; @
+        x.times -1
+
+    # One block in the heap.
+    [len inverse] &gt; block /?
+</listing>
+   <errors/>
+   <sheets>
+      <sheet>not-empty-atoms</sheet>
+      <sheet>middle-varargs</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>many-free-attributes</sheet>
+      <sheet>broken-aliases</sheet>
+      <sheet>duplicate-aliases</sheet>
+      <sheet>global-nonames</sheet>
+      <sheet>same-line-names</sheet>
+      <sheet>self-naming</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>wrap-method-calls</sheet>
+      <sheet>expand-qqs</sheet>
+      <sheet>add-probes</sheet>
+      <sheet>vars-float-up</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>unsorted-metas</sheet>
+      <sheet>incorrect-architect</sheet>
+      <sheet>expand-aliases</sheet>
+      <sheet>resolve-aliases</sheet>
+      <sheet>synthetic-references</sheet>
+      <sheet>add-default-package</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>unknown-names</sheet>
+      <sheet>noname-attributes</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>duplicate-metas</sheet>
+      <sheet>mandatory-package-meta</sheet>
+      <sheet>correct-package-meta</sheet>
+      <sheet>unused-aliases</sheet>
+      <sheet>data-objects</sheet>
+      <sheet>unit-test-without-phi</sheet>
+      <sheet>set-locators</sheet>
+      <sheet>globals-to-abstracts</sheet>
+      <sheet>remove-refs</sheet>
+      <sheet>abstracts-float-up</sheet>
+      <sheet>remove-levels</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>fix-missed-names</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>constant-folding</sheet>
+      <sheet>set-locators</sheet>
+   </sheets>
+   <license>The MIT License (MIT)
+
+2016-2022 Objectionary.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</license>
+   <metas>
+      <meta line="23">
+         <head>architect</head>
+         <tail>yegor256@gmail.com</tail>
+         <part>yegor256@gmail.com</part>
+      </meta>
+      <meta line="24">
+         <head>home</head>
+         <tail>https://github.com/objectionary/eo</tail>
+         <part>https://github.com/objectionary/eo</part>
+      </meta>
+      <meta line="25">
+         <head>package</head>
+         <tail>org.eolang</tail>
+         <part>org.eolang</part>
+      </meta>
+      <meta line="26">
+         <head>rt</head>
+         <tail>jvm org.eolang:eo-runtime:0.28.14</tail>
+         <part>jvm</part>
+         <part>org.eolang:eo-runtime:0.28.14</part>
+      </meta>
+      <meta line="27">
+         <head>version</head>
+         <tail>0.28.14</tail>
+         <part>0.28.14</part>
+      </meta>
+      <meta line="49">
+         <head>probe</head>
+         <tail>&amp;.^.pointer</tail>
+         <part>&amp;.^.pointer</part>
+      </meta>
+      <meta line="49">
+         <head>probe</head>
+         <tail>&amp;.^</tail>
+         <part>&amp;.^</part>
+      </meta>
+      <meta line="50">
+         <head>probe</head>
+         <tail>address.plus</tail>
+         <part>address.plus</part>
+      </meta>
+      <meta line="51">
+         <head>probe</head>
+         <tail>length.times</tail>
+         <part>length.times</part>
+      </meta>
+      <meta line="56">
+         <head>probe</head>
+         <tail>&amp;.add</tail>
+         <part>&amp;.add</part>
+      </meta>
+      <meta line="57">
+         <head>probe</head>
+         <tail>x.times</tail>
+         <part>x.times</part>
+      </meta>
+   </metas>
+   <objects>
+      <o abstract=""
+          line="30"
+          loc="Φ.org.eolang.heap"
+          name="heap"
+          original-name="heap"
+          pos="0">
+         <o line="30" loc="Φ.org.eolang.heap.size" name="size" pos="1"/>
+         <o abstract=""
+             atom="pointer"
+             base="heap$malloc"
+             cut="1"
+             line="32"
+             loc="Φ.org.eolang.heap.malloc"
+             name="malloc"
+             pos="2"
+             ref="32">
+            <o as="size"
+                base="size"
+                level="1"
+                loc="Φ.org.eolang.heap.malloc.α0"
+                ref="30"/>
+            <o as="free"
+                base="free"
+                level="1"
+                loc="Φ.org.eolang.heap.malloc.α1"
+                ref="37"/>
+            <o as="pointer"
+                base="pointer"
+                level="1"
+                loc="Φ.org.eolang.heap.malloc.α2"
+                ref="43"/>
+         </o>
+         <o abstract=""
+             atom="bool"
+             base="heap$free"
+             cut="3"
+             line="37"
+             loc="Φ.org.eolang.heap.free"
+             name="free"
+             pos="2"
+             ref="37">
+            <o as="size"
+                base="size"
+                level="1"
+                loc="Φ.org.eolang.heap.free.α0"
+                ref="30"/>
+            <o as="malloc"
+                base="malloc"
+                level="1"
+                loc="Φ.org.eolang.heap.free.α1"
+                ref="32"/>
+            <o as="pointer"
+                base="pointer"
+                level="1"
+                loc="Φ.org.eolang.heap.free.α2"
+                ref="43"/>
+         </o>
+         <o abstract=""
+             base="heap$pointer"
+             cut="5"
+             line="43"
+             loc="Φ.org.eolang.heap.pointer"
+             name="pointer"
+             pos="2"
+             ref="43">
+            <o as="size"
+                base="size"
+                level="1"
+                loc="Φ.org.eolang.heap.pointer.α0"
+                ref="30"/>
+            <o as="malloc"
+                base="malloc"
+                level="1"
+                loc="Φ.org.eolang.heap.pointer.α1"
+                ref="32"/>
+            <o as="free"
+                base="free"
+                level="1"
+                loc="Φ.org.eolang.heap.pointer.α2"
+                ref="37"/>
+         </o>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="pointer"
+          line="32"
+          loc="Φ.org.eolang.heap$malloc"
+          name="heap$malloc"
+          original-name="malloc"
+          parent="heap"
+          pos="2">
+         <o line="35" loc="Φ.org.eolang.heap$malloc.s" name="s" pos="3"/>
+         <o level="1"
+             line="32.30"
+             loc="Φ.org.eolang.heap$malloc.size"
+             name="size"/>
+         <o level="1"
+             line="32.37"
+             loc="Φ.org.eolang.heap$malloc.free"
+             name="free"/>
+         <o level="1"
+             line="32.43"
+             loc="Φ.org.eolang.heap$malloc.pointer"
+             name="pointer"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          atom="bool"
+          line="37"
+          loc="Φ.org.eolang.heap$free"
+          name="heap$free"
+          original-name="free"
+          parent="heap"
+          pos="2">
+         <o line="41" loc="Φ.org.eolang.heap$free.p" name="p" pos="3"/>
+         <o level="1"
+             line="37.30"
+             loc="Φ.org.eolang.heap$free.size"
+             name="size"/>
+         <o level="1"
+             line="37.32"
+             loc="Φ.org.eolang.heap$free.malloc"
+             name="malloc"/>
+         <o level="1"
+             line="37.43"
+             loc="Φ.org.eolang.heap$free.pointer"
+             name="pointer"/>
+      </o>
+      <o abstract=""
+          ancestors="1"
+          line="43"
+          loc="Φ.org.eolang.heap$pointer"
+          name="heap$pointer"
+          original-name="pointer"
+          parent="heap"
+          pos="2">
+         <o line="44"
+             loc="Φ.org.eolang.heap$pointer.address"
+             name="address"
+             pos="3"/>
+         <o line="44"
+             loc="Φ.org.eolang.heap$pointer.length"
+             name="length"
+             pos="11"/>
+         <o base="address"
+             line="45"
+             loc="Φ.org.eolang.heap$pointer.φ"
+             name="@"
+             pos="4"
+             ref="44"/>
+         <o abstract=""
+             base="heap$pointer$add"
+             cut="8"
+             line="47"
+             loc="Φ.org.eolang.heap$pointer.add"
+             name="add"
+             pos="4"
+             ref="47">
+            <o as="address"
+                base="address"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.add.α0"
+                ref="44"/>
+            <o as="length"
+                base="length"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.add.α1"
+                ref="44"/>
+            <o as="@"
+                base="@"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.add.α2"
+                ref="45"/>
+            <o as="sub"
+                base="sub"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.add.α3"
+                ref="54"/>
+            <o as="block"
+                base="block"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.add.α4"
+                ref="59"/>
+            <o as="size"
+                base="size"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.add.α5"
+                ref="43.30"/>
+            <o as="malloc"
+                base="malloc"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.add.α6"
+                ref="43.32"/>
+            <o as="free"
+                base="free"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.add.α7"
+                ref="43.37"/>
+         </o>
+         <o abstract=""
+             base="heap$pointer$sub"
+             cut="19"
+             line="54"
+             loc="Φ.org.eolang.heap$pointer.sub"
+             name="sub"
+             pos="4"
+             ref="54">
+            <o as="address"
+                base="address"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.sub.α0"
+                ref="44"/>
+            <o as="length"
+                base="length"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.sub.α1"
+                ref="44"/>
+            <o as="@"
+                base="@"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.sub.α2"
+                ref="45"/>
+            <o as="add"
+                base="add"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.sub.α3"
+                ref="47"/>
+            <o as="block"
+                base="block"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.sub.α4"
+                ref="59"/>
+            <o as="size"
+                base="size"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.sub.α5"
+                ref="43.30"/>
+            <o as="malloc"
+                base="malloc"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.sub.α6"
+                ref="43.32"/>
+            <o as="free"
+                base="free"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.sub.α7"
+                ref="43.37"/>
+         </o>
+         <o abstract=""
+             atom="?"
+             base="heap$pointer$block"
+             cut="26"
+             line="59"
+             loc="Φ.org.eolang.heap$pointer.block"
+             name="block"
+             pos="4"
+             ref="59">
+            <o as="address"
+                base="address"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.block.α0"
+                ref="44"/>
+            <o as="length"
+                base="length"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.block.α1"
+                ref="44"/>
+            <o as="@"
+                base="@"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.block.α2"
+                ref="45"/>
+            <o as="add"
+                base="add"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.block.α3"
+                ref="47"/>
+            <o as="sub"
+                base="sub"
+                level="1"
+                loc="Φ.org.eolang.heap$pointer.block.α4"
+                ref="54"/>
+            <o as="size"
+                base="size"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.block.α5"
+                ref="43.30"/>
+            <o as="malloc"
+                base="malloc"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.block.α6"
+                ref="43.32"/>
+            <o as="free"
+                base="free"
+                level="2"
+                loc="Φ.org.eolang.heap$pointer.block.α7"
+                ref="43.37"/>
+         </o>
+         <o level="1"
+             line="43.30"
+             loc="Φ.org.eolang.heap$pointer.size"
+             name="size"/>
+         <o level="1"
+             line="43.32"
+             loc="Φ.org.eolang.heap$pointer.malloc"
+             name="malloc"/>
+         <o level="1"
+             line="43.37"
+             loc="Φ.org.eolang.heap$pointer.free"
+             name="free"/>
+      </o>
+      <o abstract=""
+          ancestors="2"
+          line="47"
+          loc="Φ.org.eolang.heap$pointer$add"
+          name="heap$pointer$add"
+          original-name="add"
+          parent="heap$pointer"
+          pos="4">
+         <o line="48"
+             loc="Φ.org.eolang.heap$pointer$add.x"
+             name="x"
+             pos="5"/>
+         <o base=".pointer"
+             line="49"
+             loc="Φ.org.eolang.heap$pointer$add.φ"
+             name="@"
+             pos="9">
+            <o base=".^"
+                line="49"
+                loc="Φ.org.eolang.heap$pointer$add.φ.ρ"
+                pos="7">
+               <o base="&amp;"
+                   line="49"
+                   loc="Φ.org.eolang.heap$pointer$add.φ.ρ.ρ"
+                   pos="6"/>
+            </o>
+            <o base=".plus"
+                line="50"
+                loc="Φ.org.eolang.heap$pointer$add.φ.ρ"
+                pos="15">
+               <o base="address"
+                   line="50"
+                   loc="Φ.org.eolang.heap$pointer$add.φ.ρ.ρ"
+                   pos="8"
+                   ref="47.44"/>
+               <o base=".times"
+                   line="51"
+                   loc="Φ.org.eolang.heap$pointer$add.φ.ρ.ρ"
+                   pos="16">
+                  <o base="length"
+                      line="51"
+                      loc="Φ.org.eolang.heap$pointer$add.φ.ρ.ρ.ρ"
+                      pos="10"
+                      ref="47.44"/>
+                  <o base="x"
+                      line="51"
+                      loc="Φ.org.eolang.heap$pointer$add.φ.ρ.ρ.ρ"
+                      pos="23"
+                      ref="48"/>
+               </o>
+            </o>
+            <o base="length"
+                line="52"
+                loc="Φ.org.eolang.heap$pointer$add.φ.ρ"
+                pos="8"
+                ref="47.44"/>
+         </o>
+         <o level="1"
+             line="47.44"
+             loc="Φ.org.eolang.heap$pointer$add.address"
+             name="address"/>
+         <o level="1"
+             line="47.44"
+             loc="Φ.org.eolang.heap$pointer$add.length"
+             name="length"/>
+         <o level="1"
+             line="47.54"
+             loc="Φ.org.eolang.heap$pointer$add.sub"
+             name="sub"/>
+         <o level="1"
+             line="47.59"
+             loc="Φ.org.eolang.heap$pointer$add.block"
+             name="block"/>
+         <o level="2"
+             line="47.30"
+             loc="Φ.org.eolang.heap$pointer$add.size"
+             name="size"/>
+         <o level="2"
+             line="47.32"
+             loc="Φ.org.eolang.heap$pointer$add.malloc"
+             name="malloc"/>
+         <o level="2"
+             line="47.37"
+             loc="Φ.org.eolang.heap$pointer$add.free"
+             name="free"/>
+      </o>
+      <o abstract=""
+          ancestors="2"
+          line="54"
+          loc="Φ.org.eolang.heap$pointer$sub"
+          name="heap$pointer$sub"
+          original-name="sub"
+          parent="heap$pointer"
+          pos="4">
+         <o line="55"
+             loc="Φ.org.eolang.heap$pointer$sub.x"
+             name="x"
+             pos="5"/>
+         <o base=".add"
+             line="56"
+             loc="Φ.org.eolang.heap$pointer$sub.φ"
+             name="@"
+             pos="7">
+            <o base="&amp;"
+                line="56"
+                loc="Φ.org.eolang.heap$pointer$sub.φ.ρ"
+                pos="6"/>
+            <o base=".times"
+                line="57"
+                loc="Φ.org.eolang.heap$pointer$sub.φ.ρ"
+                pos="9">
+               <o base="x"
+                   line="57"
+                   loc="Φ.org.eolang.heap$pointer$sub.φ.ρ.ρ"
+                   pos="8"
+                   ref="55"/>
+               <o base="org.eolang.int"
+                   data="bytes"
+                   line="57"
+                   loc="Φ.org.eolang.heap$pointer$sub.φ.ρ.ρ"
+                   pos="16">FF FF FF FF FF FF FF FF</o>
+            </o>
+         </o>
+         <o level="1"
+             line="54.44"
+             loc="Φ.org.eolang.heap$pointer$sub.address"
+             name="address"/>
+         <o level="1"
+             line="54.44"
+             loc="Φ.org.eolang.heap$pointer$sub.length"
+             name="length"/>
+         <o level="1"
+             line="54.47"
+             loc="Φ.org.eolang.heap$pointer$sub.add"
+             name="add"/>
+         <o level="1"
+             line="54.59"
+             loc="Φ.org.eolang.heap$pointer$sub.block"
+             name="block"/>
+         <o level="2"
+             line="54.30"
+             loc="Φ.org.eolang.heap$pointer$sub.size"
+             name="size"/>
+         <o level="2"
+             line="54.32"
+             loc="Φ.org.eolang.heap$pointer$sub.malloc"
+             name="malloc"/>
+         <o level="2"
+             line="54.37"
+             loc="Φ.org.eolang.heap$pointer$sub.free"
+             name="free"/>
+      </o>
+      <o abstract=""
+          ancestors="2"
+          atom="?"
+          line="59"
+          loc="Φ.org.eolang.heap$pointer$block"
+          name="heap$pointer$block"
+          original-name="block"
+          parent="heap$pointer"
+          pos="4">
+         <o line="60"
+             loc="Φ.org.eolang.heap$pointer$block.len"
+             name="len"
+             pos="5"/>
+         <o line="60"
+             loc="Φ.org.eolang.heap$pointer$block.inverse"
+             name="inverse"
+             pos="9"/>
+         <o level="1"
+             line="59.44"
+             loc="Φ.org.eolang.heap$pointer$block.address"
+             name="address"/>
+         <o level="1"
+             line="59.44"
+             loc="Φ.org.eolang.heap$pointer$block.length"
+             name="length"/>
+         <o level="1"
+             line="59.45"
+             loc="Φ.org.eolang.heap$pointer$block.φ"
+             name="@"/>
+         <o level="1"
+             line="59.47"
+             loc="Φ.org.eolang.heap$pointer$block.add"
+             name="add"/>
+         <o level="1"
+             line="59.54"
+             loc="Φ.org.eolang.heap$pointer$block.sub"
+             name="sub"/>
+         <o level="2"
+             line="59.30"
+             loc="Φ.org.eolang.heap$pointer$block.size"
+             name="size"/>
+         <o level="2"
+             line="59.32"
+             loc="Φ.org.eolang.heap$pointer$block.malloc"
+             name="malloc"/>
+         <o level="2"
+             line="59.37"
+             loc="Φ.org.eolang.heap$pointer$block.free"
+             name="free"/>
+      </o>
+   </objects>
+</program>

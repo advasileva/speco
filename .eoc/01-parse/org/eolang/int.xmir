@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program ms="29"
+          name="org.eolang.int"
+          source="D:\Development\Java\Objectionary\hw\.eoc\04-pull\org\eolang\int.eo"
+          time="2023-01-08T10:48:50.341933500Z"
+          version="0.28.16">
+   <listing># The MIT License (MIT)
+#
+#  2016-2022 Objectionary.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
++alias org.eolang.collections.list
++architect yegor256@gmail.com
++home https://github.com/objectionary/eo
++package org.eolang
++rt jvm org.eolang:eo-runtime:0.28.14
++version 0.28.14
+
+[] &gt; int
+
+  # Tests that $ = x
+  [x] &gt; eq
+    eq. &gt; @
+      ^.as-bytes
+      x.as-bytes
+
+  # Tests that $ &lt; x
+  [x] &gt; lt
+    gt. &gt; @
+      plus.
+        x
+        neg.
+          ^
+      0
+
+  # Tests that $ ≤ x
+  [x] &gt; lte
+    not. &gt; @
+      ^.gt x
+
+  # Tests that $ &gt; x
+  [x] &gt; gt /bool
+
+  # Tests that $ ≥ x
+  [x] &gt; gte
+    not. &gt; @
+      ^.lt x
+
+  # Change the sign of the number
+  [] &gt; neg
+    ^.times -1 &gt; @
+
+  # Add to the current one
+  [x...] &gt; plus /int
+
+  # Subtract from the current one
+  [x...] &gt; minus
+    mapped. &gt; x-neg
+      list
+        x
+      [element]
+        neg. &gt; @
+          element
+    ^.plus &gt; @
+      ...x-neg
+
+  # Multiplication this one by another int
+  [x...] &gt; times /int
+
+  # Divide this one by another int
+  [x...] &gt; div /int
+
+  # Converts this to bytes
+  [] &gt; as-bytes /bytes
+
+  # Converts this to hash
+  [] &gt; as-hash
+    as-int. &gt; @
+      xor.
+        as-bytes
+        right.
+          as-bytes
+          32
+</listing>
+   <errors/>
+   <sheets/>
+   <license>The MIT License (MIT)
+
+2016-2022 Objectionary.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</license>
+   <metas>
+      <meta line="23">
+         <head>alias</head>
+         <tail>org.eolang.collections.list</tail>
+         <part>org.eolang.collections.list</part>
+      </meta>
+      <meta line="24">
+         <head>architect</head>
+         <tail>yegor256@gmail.com</tail>
+         <part>yegor256@gmail.com</part>
+      </meta>
+      <meta line="25">
+         <head>home</head>
+         <tail>https://github.com/objectionary/eo</tail>
+         <part>https://github.com/objectionary/eo</part>
+      </meta>
+      <meta line="26">
+         <head>package</head>
+         <tail>org.eolang</tail>
+         <part>org.eolang</part>
+      </meta>
+      <meta line="27">
+         <head>rt</head>
+         <tail>jvm org.eolang:eo-runtime:0.28.14</tail>
+         <part>jvm</part>
+         <part>org.eolang:eo-runtime:0.28.14</part>
+      </meta>
+      <meta line="28">
+         <head>version</head>
+         <tail>0.28.14</tail>
+         <part>0.28.14</part>
+      </meta>
+   </metas>
+   <objects>
+      <o abstract="" line="30" name="int" pos="0">
+         <o abstract="" line="32" name="eq" pos="2">
+            <o line="33" name="x" pos="3"/>
+            <o base=".eq" line="34" name="@" pos="4">
+               <o base="^" line="35" pos="6"/>
+               <o base=".as-bytes" line="35" method="" pos="7"/>
+               <o base="x" line="36" pos="6"/>
+               <o base=".as-bytes" line="36" method="" pos="7"/>
+            </o>
+         </o>
+         <o abstract="" line="38" name="lt" pos="2">
+            <o line="39" name="x" pos="3"/>
+            <o base=".gt" line="40" name="@" pos="4">
+               <o base=".plus" line="41" pos="6">
+                  <o base="x" line="42" pos="8"/>
+                  <o base=".neg" line="43" pos="8">
+                     <o base="^" line="44" pos="10"/>
+                  </o>
+               </o>
+               <o base="int" data="bytes" line="45" pos="6">00 00 00 00 00 00 00 00</o>
+            </o>
+         </o>
+         <o abstract="" line="47" name="lte" pos="2">
+            <o line="48" name="x" pos="3"/>
+            <o base=".not" line="49" name="@" pos="4">
+               <o base="^" line="50" pos="6"/>
+               <o base=".gt" line="50" method="" pos="7">
+                  <o base="x" line="50" pos="11"/>
+               </o>
+            </o>
+         </o>
+         <o abstract="" atom="bool" line="52" name="gt" pos="2">
+            <o line="53" name="x" pos="3"/>
+         </o>
+         <o abstract="" line="55" name="gte" pos="2">
+            <o line="56" name="x" pos="3"/>
+            <o base=".not" line="57" name="@" pos="4">
+               <o base="^" line="58" pos="6"/>
+               <o base=".lt" line="58" method="" pos="7">
+                  <o base="x" line="58" pos="11"/>
+               </o>
+            </o>
+         </o>
+         <o abstract="" line="60" name="neg" pos="2">
+            <o base="^" line="62" pos="4"/>
+            <o base=".times" line="62" method="" name="@" pos="5">
+               <o base="int" data="bytes" line="62" pos="12">FF FF FF FF FF FF FF FF</o>
+            </o>
+         </o>
+         <o abstract="" atom="int" line="64" name="plus" pos="2">
+            <o line="65" name="x" pos="3" vararg=""/>
+         </o>
+         <o abstract="" line="67" name="minus" pos="2">
+            <o line="68" name="x" pos="3" vararg=""/>
+            <o base=".mapped" line="69" name="x-neg" pos="4">
+               <o base="list" line="70" pos="6">
+                  <o base="x" line="71" pos="8"/>
+               </o>
+               <o abstract="" line="72" pos="6">
+                  <o line="72" name="element" pos="7"/>
+                  <o base=".neg" line="73" name="@" pos="8">
+                     <o base="element" line="74" pos="10"/>
+                  </o>
+               </o>
+            </o>
+            <o base="^" line="75" pos="4"/>
+            <o base=".plus" line="75" method="" name="@" pos="5">
+               <o base="x-neg" line="76" pos="6" unvar=""/>
+            </o>
+         </o>
+         <o abstract="" atom="int" line="78" name="times" pos="2">
+            <o line="79" name="x" pos="3" vararg=""/>
+         </o>
+         <o abstract="" atom="int" line="81" name="div" pos="2">
+            <o line="82" name="x" pos="3" vararg=""/>
+         </o>
+         <o abstract="" atom="bytes" line="84" name="as-bytes" pos="2"/>
+         <o abstract="" line="87" name="as-hash" pos="2">
+            <o base=".as-int" line="89" name="@" pos="4">
+               <o base=".xor" line="90" pos="6">
+                  <o base="as-bytes" line="91" pos="8"/>
+                  <o base=".right" line="92" pos="8">
+                     <o base="as-bytes" line="93" pos="10"/>
+                     <o base="int" data="bytes" line="94" pos="10">00 00 00 00 00 00 00 20</o>
+                  </o>
+               </o>
+            </o>
+         </o>
+      </o>
+   </objects>
+</program>
