@@ -128,10 +128,14 @@ public final class MainTest {
             executor = "bash";
             flag = "-c";
         }
+        System.out.println(executor + flag + command);
         final Process process = new ProcessBuilder(executor, flag, command).start();
         final StringWriter writer = new StringWriter();
         IOUtils.copy(process.getInputStream(), writer);
         final String[] output = writer.toString().split("\\r?\\n");
+        for (String line : output) {
+            System.out.println(line);
+        }
         final String[] result = Arrays.copyOfRange(output, 11, output.length - 1);
         return Arrays.asList(result);
     }
