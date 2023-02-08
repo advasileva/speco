@@ -84,12 +84,7 @@ final class Speco {
      * @throws IOException In case of errors when working with files or parsing a document
      */
     public void exec() throws IOException {
-        final Path source;
-        if (this.eolang) {
-            source = parse(this.input);
-        } else {
-            source = this.input;
-        }
+        final Path source = this.input;
         final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
         for (final Path path : directory) {
             Files.createDirectories(this.output);
