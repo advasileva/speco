@@ -103,11 +103,11 @@ class SpecoTest {
     public void convertsFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
         final Path input = TESTS.resolve("input");
-        final Path output = temp.resolve("input");
+        final Path output = temp.resolve("output");
         SpecoTest.run(script, input, output);
         MatcherAssert.assertThat(
             "Unexpected transformation result",
-            Files.readString(output.resolve("app.eo")),
+            SpecoTest.dataize(SpecoTest.run(script, this.TESTS, temp).toString()),
             Matchers.equalTo(
                 script.get("after").toString()
             )
@@ -120,11 +120,11 @@ class SpecoTest {
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
         final Path input = TESTS.resolve("input");
-        final Path output = temp.resolve("input");
+        final Path output = temp.resolve("output");
         SpecoTest.run(script, output, temp);
         MatcherAssert.assertThat(
             "Unexpected execution result",
-            SpecoTest.dataize(output.toString()),
+                Files.readString(SpecoTest.run(script, this.TESTS, temp).resolve("app.eo")),
             Matchers.equalTo(
                 script.get("result").toString().split("\\r?\\n")
             )
@@ -135,12 +135,15 @@ class SpecoTest {
      * Runs Speco.
      *
      * @param script Yaml data object
-     * @param input Path to the input dir
-     * @param output Path to the output dir
+     * @param source Path to the input dir
+     * @param target Path to the output dir
+     * @return Path to the output dir
      * @throws IOException Iff IO error
      */
-    private static void run(final Map<String, Object> script, final Path input, final Path output)
+    private static Path run(final Map<String, Object> script, final Path source, final Path target)
         throws IOException {
+        final Path input = source.resolve("input");
+        final Path output = target.resolve("output");
         Files.createDirectories(input);
         Files.write(
             input.resolve("app.eo"),
@@ -148,6 +151,7 @@ class SpecoTest {
             StandardOpenOption.CREATE
         );
         new Speco(input, output, true).exec();
+        return output;
     }
 
     /**
