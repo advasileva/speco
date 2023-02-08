@@ -55,16 +55,15 @@ class SpecoTest {
      */
     private static final int INTENT = 11;
 
+    private static final Path tests = Path.of(
+            "src", "test", "resources", "org", "eolang", "speco");
+
     @Disabled
     @Tag("fast")
     @ParameterizedTest
     @ValueSource(strings = {"simple"})
     public void convertsFromXmir(final String title, @TempDir final Path temp) throws IOException {
-        final Path base = Path.of(
-            "src", "test", "resources",
-            "org", "eolang", "speco",
-            "xmir", title
-        );
+        final Path base = tests.resolve("xmir").resolve(title);
         new Speco(base.resolve("in"), temp, false).exec();
         final Path reference = base.resolve("out");
         for (final Path path : Files.newDirectoryStream(reference)) {
@@ -98,9 +97,10 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void convertsFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
+        SpecoTest.run(script, tests.resolve(pack), temp);
         MatcherAssert.assertThat(
             "Unexpected transformation result",
-            Files.readString(SpecoTest.run(script, temp).resolve("app.eo")),
+            Files.readString(temp.resolve("app.eo")),
             Matchers.equalTo(
                 script.get("after").toString()
             )
@@ -112,7 +112,7 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        SpecoTest.run(script, temp).toString();
+        SpecoTest.run(script, tests.resolve(pack), temp);
     }
 
     /**
@@ -123,19 +123,14 @@ class SpecoTest {
      * @return Path to the output dir
      * @throws IOException Iff IO error
      */
-    private static Path run(final Map<String, Object> script, final Path temp)
+    private static void run(final Map<String, Object> script, final Path input, final Path output)
         throws IOException {
-        final Path input = temp.resolve("input");
-        final Path output = temp.resolve("output");
-        Files.createDirectories(input);
         Files.write(
             input.resolve("app.eo"),
             script.get("before").toString().getBytes(),
             StandardOpenOption.CREATE
         );
-        Files.createDirectories(output);
         new Speco(input, output, true).exec();
-        return output;
     }
 
     /**
