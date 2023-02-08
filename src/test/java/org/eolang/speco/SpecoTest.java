@@ -55,15 +55,18 @@ class SpecoTest {
      */
     private static final int INTENT = 11;
 
-    private static final Path tests = Path.of(
-            "src", "test", "resources", "org", "eolang", "speco");
+    /**
+     * Path to project test directory.
+     */
+    private static final Path TESTS = Path.of(
+        "src", "test", "resources", "org", "eolang", "speco"
+    );
 
-    @Disabled
     @Tag("fast")
     @ParameterizedTest
     @ValueSource(strings = {"simple"})
     public void convertsFromXmir(final String title, @TempDir final Path temp) throws IOException {
-        final Path base = tests.resolve("xmir").resolve(title);
+        final Path base = TESTS.resolve("xmir").resolve(title);
         new Speco(base.resolve("in"), temp, false).exec();
         final Path reference = base.resolve("out");
         for (final Path path : Files.newDirectoryStream(reference)) {
@@ -97,7 +100,7 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void convertsFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        SpecoTest.run(script, tests.resolve(pack), temp);
+        SpecoTest.run(script, TESTS.resolve(pack), temp);
         MatcherAssert.assertThat(
             "Unexpected transformation result",
             Files.readString(temp.resolve("app.eo")),
@@ -112,14 +115,15 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        SpecoTest.run(script, tests.resolve(pack), temp);
+        SpecoTest.run(script, TESTS.resolve(pack), temp);
     }
 
     /**
      * Runs Speco.
      *
      * @param script Yaml data object
-     * @param temp Path to the temporary dir
+     * @param input Path to the input dir
+     * @param output Path to the output dir
      * @return Path to the output dir
      * @throws IOException Iff IO error
      */

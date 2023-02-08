@@ -33,12 +33,8 @@ import com.yegor256.xsline.Train;
 import com.yegor256.xsline.Xsline;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileDeleteStrategy;
 import org.apache.commons.io.FileUtils;
 import org.cactoos.io.InputOf;
 import org.cactoos.io.OutputTo;
@@ -93,7 +89,19 @@ final class Speco {
         } else {
             source = this.input;
         }
-        FileUtils.deleteQuietly(source.toFile());
+        for (final Path path : Files.newDirectoryStream(source)) {
+            final String transformed = Speco.applyTrain(
+                Speco.getParsedXml(new XMLDocument(Files.readString(path)))
+            ).toString();
+            final String after;
+            if (this.eolang) {
+                after = new XMIR(transformed).toEO();
+            } else {
+                after = transformed;
+            }
+            Files.createDirectories(this.output);
+            Files.write(this.output.resolve(path.getFileName()), after.getBytes());
+        }
     }
 
     /**
@@ -137,14 +145,11 @@ final class Speco {
         final Path source = Path.of(name.append("_prs").toString());
         FileUtils.copyDirectory(input.toFile(), source.toFile());
         for (final Path path : Files.newDirectoryStream(source)) {
-            final String content = String.format("%s\n", Files.readString(path));
-            final FileOutputStream file = new FileOutputStream(path.toFile());
             new Syntax(
                 "scenario",
-                    new InputOf(content),
-                    new OutputTo(file)
+                new InputOf(String.format("%s\n", Files.readString(path))),
+                new OutputTo(new FileOutputStream(path.toFile()))
             ).parse();
-            file.close();
         }
         LauncherKt.launch(source.toString());
         return Path.of(name.append("_aoi").toString());
