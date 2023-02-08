@@ -87,6 +87,7 @@ final class Speco {
         final Path source;
         if (this.eolang) {
             source = parse(this.input);
+            FileUtils.cleanDirectory(Path.of(this.input.toString().concat("_prs")).toFile());
         } else {
             source = this.input;
         }
@@ -144,7 +145,6 @@ final class Speco {
             file.close();
         }
         LauncherKt.launch(source.toString());
-        FileUtils.cleanDirectory(source.toFile());
         return Path.of(name.append("_aoi").toString());
     }
 }
