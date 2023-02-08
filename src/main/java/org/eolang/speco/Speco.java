@@ -140,10 +140,6 @@ final class Speco {
         final StringBuilder name = new StringBuilder(input.toString());
         final Path source = Path.of(name.append("_prs").toString());
         FileUtils.copyDirectory(input.toFile(), source.toFile());
-        final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
-        for (final Path path : directory) {
-        }
-        directory.close();
         LauncherKt.launch(source.toString());
         return Path.of(name.append("_aoi").toString());
     }
