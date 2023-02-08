@@ -31,6 +31,8 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Map;
+
+import jdk.internal.org.jline.utils.Log;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.eolang.jucs.ClasspathSource;
@@ -116,6 +118,13 @@ class SpecoTest {
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
         SpecoTest.run(script, TESTS.resolve(pack), temp);
+        MatcherAssert.assertThat(
+                "Unexpected execution result",
+                SpecoTest.dataize(temp.toString()),
+                Matchers.equalTo(
+                        script.get("result").toString().split("\\r?\\n")
+                )
+        );
     }
 
     /**
@@ -144,7 +153,7 @@ class SpecoTest {
     * @return List of lines in output
     * @throws IOException Iff IO error
     */
-    private static String[] dataize(final String target) throws IOException, InterruptedException {
+    private static String[] dataize(final String target) throws IOException {
         final String executor;
         final String flag;
         if (SystemUtils.IS_OS_WINDOWS) {
@@ -159,8 +168,12 @@ class SpecoTest {
             flag,
             String.format("eoc link -s %s && eoc --alone dataize app && eoc clean", target)
         ).start();
+        try {
+            process.waitFor();
+        } catch (InterruptedException exception) {
+            exception.printStackTrace();
+        }
         final StringWriter writer = new StringWriter();
-        process.waitFor();
         IOUtils.copy(process.getInputStream(), writer, Charset.defaultCharset());
         process.getInputStream().close();
         process.destroy();
