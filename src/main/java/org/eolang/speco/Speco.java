@@ -90,8 +90,8 @@ final class Speco {
         } else {
             source = this.input;
         }
-        final DirectoryStream directory = Files.newDirectoryStream(source);
-        for (final Path path : Files.newDirectoryStream(source)) {
+        final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
+        for (final Path path : directory) {
             final String transformed = Speco.applyTrain(
                 Speco.getParsedXml(new XMLDocument(Files.readString(path)))
             ).toString();
