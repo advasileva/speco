@@ -152,11 +152,13 @@ final class Speco {
         FileUtils.copyDirectory(input.toFile(), source.toFile());
         final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
         for (final Path path : directory) {
+            final FileOutputStream file = new FileOutputStream(path.toFile());
             new Syntax(
                 "scenario",
                 new InputOf(String.format("%s\n", Files.readString(path))),
-                new OutputTo(new FileOutputStream(path.toFile()))
+                new OutputTo(file)
             ).parse();
+            file.close();
         }
         directory.close();
         LauncherKt.launch(source.toString());
