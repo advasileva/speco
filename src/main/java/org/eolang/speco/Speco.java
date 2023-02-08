@@ -152,10 +152,11 @@ final class Speco {
         FileUtils.copyDirectory(input.toFile(), source.toFile());
         final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
         for (final Path path : directory) {
+            final String content = String.format("%s\n", Files.readString(path));
             final FileOutputStream file = new FileOutputStream(path.toFile());
             new Syntax(
                 "scenario",
-                new InputOf(String.format("%s\n", Files.readString(path))),
+                new InputOf(content),
                 new OutputTo(file)
             ).parse();
             file.close();
