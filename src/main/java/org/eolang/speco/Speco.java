@@ -135,11 +135,6 @@ final class Speco {
         for (final Path path : Files.newDirectoryStream(source)) {
             final String content = String.format("%s\n", Files.readString(path));
             final FileOutputStream file = new FileOutputStream(path.toFile());
-            new Syntax(
-                "scenario",
-                    new InputOf(content),
-                    new OutputTo(file)
-            ).parse();
             file.close();
         }
         return Path.of(name.append("_aoi").toString());
