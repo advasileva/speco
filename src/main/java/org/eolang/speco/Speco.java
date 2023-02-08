@@ -139,7 +139,6 @@ final class Speco {
                     new OutputTo(new FileOutputStream(path.toFile()))
             ).parse();
         }
-        LauncherKt.launch(source.toString());
         return Path.of(name.append("_aoi").toString());
     }
 }
