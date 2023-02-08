@@ -104,7 +104,7 @@ class SpecoTest {
         final Map<String, Object> script = new Yaml().load(pack);
         MatcherAssert.assertThat(
             "Unexpected transformation result",
-            SpecoTest.dataize(SpecoTest.run(script, this.TESTS, temp).toString()),
+            Files.readString(SpecoTest.run(script, this.TESTS, temp).resolve("app.eo")),
             Matchers.equalTo(
                 script.get("after").toString()
             )
@@ -118,7 +118,7 @@ class SpecoTest {
         final Map<String, Object> script = new Yaml().load(pack);
         MatcherAssert.assertThat(
             "Unexpected execution result",
-            Files.readString(SpecoTest.run(script, this.TESTS, temp).resolve("app.eo")),
+            SpecoTest.dataize(SpecoTest.run(script, this.TESTS, temp).toString()),
             Matchers.equalTo(
                 script.get("result").toString().split("\\r?\\n")
             )

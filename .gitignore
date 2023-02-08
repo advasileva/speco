@@ -9,3 +9,4 @@ target/
 .recommenders
 speco.jar
 *.eoc
+input*/
