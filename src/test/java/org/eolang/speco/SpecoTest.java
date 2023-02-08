@@ -31,7 +31,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Map;
-
 import jdk.internal.org.jline.utils.Log;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.SystemUtils;
@@ -119,11 +118,11 @@ class SpecoTest {
         final Map<String, Object> script = new Yaml().load(pack);
         SpecoTest.run(script, TESTS.resolve(pack), temp);
         MatcherAssert.assertThat(
-                "Unexpected execution result",
-                SpecoTest.dataize(temp.toString()),
-                Matchers.equalTo(
-                        script.get("result").toString().split("\\r?\\n")
-                )
+            "Unexpected execution result",
+            SpecoTest.dataize(temp.toString()),
+            Matchers.equalTo(
+                script.get("result").toString().split("\\r?\\n")
+            )
         );
     }
 
@@ -170,7 +169,7 @@ class SpecoTest {
         ).start();
         try {
             process.waitFor();
-        } catch (InterruptedException exception) {
+        } catch (final InterruptedException exception) {
             exception.printStackTrace();
         }
         final StringWriter writer = new StringWriter();
