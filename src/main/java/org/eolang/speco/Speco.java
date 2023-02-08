@@ -90,6 +90,7 @@ final class Speco {
         } else {
             source = this.input;
         }
+        Files.createDirectories(source);
     }
 
     /**
