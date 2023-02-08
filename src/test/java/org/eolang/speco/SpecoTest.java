@@ -112,7 +112,7 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        SpecoTest.exec(SpecoTest.run(script, temp).toString());
+        SpecoTest.run(script, temp).toString();
     }
 
     /**

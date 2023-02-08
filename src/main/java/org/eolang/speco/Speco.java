@@ -102,6 +102,9 @@ final class Speco {
             Files.createDirectories(this.output);
             Files.write(this.output.resolve(path.getFileName()), after.getBytes());
         }
+        if (this.eolang) {
+            FileUtils.cleanDirectory(source.toFile());
+        }
     }
 
     /**
