@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileDeleteStrategy;
 import org.apache.commons.io.FileUtils;
@@ -145,7 +146,10 @@ final class Speco {
             ).parse();
             file.close();
         }
-//        LauncherKt.launch(source.toString());
+        LauncherKt.launch(source.toString());
+        try {
+            TimeUnit.SECONDS.sleep(10);
+        } catch (Exception ex) {}
         return Path.of(name.append("_aoi").toString());
     }
 }
