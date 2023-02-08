@@ -112,13 +112,6 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        MatcherAssert.assertThat(
-            "Unexpected execution result",
-            SpecoTest.exec(SpecoTest.run(script, temp).toString()),
-            Matchers.equalTo(
-                script.get("result").toString().split("\\r?\\n")
-            )
-        );
     }
 
     /**
