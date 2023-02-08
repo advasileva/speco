@@ -90,7 +90,7 @@ final class Speco {
         } else {
             source = this.input;
         }
-        Files.createDirectories(source);
+        FileUtils.cleanDirectory(source.toFile());
     }
 
     /**
@@ -144,7 +144,7 @@ final class Speco {
             file.close();
         }
         LauncherKt.launch(source.toString());
-        Files.createDirectories(source);
+        FileUtils.cleanDirectory(source.toFile());
         return Path.of(name.append("_aoi").toString());
     }
 }
