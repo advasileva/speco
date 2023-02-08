@@ -84,7 +84,12 @@ final class Speco {
      * @throws IOException In case of errors when working with files or parsing a document
      */
     public void exec() throws IOException {
-        final Path source = this.input;
+        final Path source;
+        if (this.eolang) {
+            source = parse(this.input);
+        } else {
+            source = this.input;
+        }
         final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
         for (final Path path : directory) {
             Files.createDirectories(this.output);
@@ -139,11 +144,6 @@ final class Speco {
         for (final Path path : directory) {
             final String content = String.format("%s\n", Files.readString(path));
             final FileOutputStream file = new FileOutputStream(path.toFile());
-            new Syntax(
-                "scenario",
-                new InputOf(content),
-                new OutputTo(file)
-            ).parse();
             file.close();
         }
         directory.close();
