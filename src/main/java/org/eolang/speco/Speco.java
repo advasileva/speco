@@ -93,9 +93,6 @@ final class Speco {
         } else {
             source = this.input;
         }
-        for (final Path path : Files.newDirectoryStream(source)) {
-            FileDeleteStrategy.FORCE.delete(path.toFile());
-        }
     }
 
     /**
