@@ -133,11 +133,6 @@ final class Speco {
         final Path source = Path.of(name.append("_prs").toString());
         FileUtils.copyDirectory(input.toFile(), source.toFile());
         for (final Path path : Files.newDirectoryStream(source)) {
-            new Syntax(
-                    "scenario",
-                    new InputOf(String.format("%s\n", Files.readString(path))),
-                    new OutputTo(new FileOutputStream(path.toFile()))
-            ).parse();
         }
         return Path.of(name.append("_aoi").toString());
     }
