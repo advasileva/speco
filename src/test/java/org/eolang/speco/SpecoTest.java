@@ -140,6 +140,7 @@ class SpecoTest {
      */
     private static void run(final Map<String, Object> script, final Path input, final Path output)
         throws IOException {
+        Files.createDirectories(input);
         Files.write(
             input.resolve("app.eo"),
             script.get("before").toString().getBytes(),
