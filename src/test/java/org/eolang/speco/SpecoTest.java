@@ -32,6 +32,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Map;
 import jdk.internal.org.jline.utils.Log;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.eolang.jucs.ClasspathSource;
@@ -101,7 +102,8 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void convertsFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        SpecoTest.run(script, TESTS.resolve("input"), temp);
+        final Path input = TESTS.resolve("input");
+        SpecoTest.run(script, input, temp);
         MatcherAssert.assertThat(
             "Unexpected transformation result",
             Files.readString(temp.resolve("app.eo")),
@@ -116,7 +118,8 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        SpecoTest.run(script, TESTS.resolve("input"), temp);
+        final Path input = TESTS.resolve("input");
+        SpecoTest.run(script, input, temp);
         MatcherAssert.assertThat(
             "Unexpected execution result",
             SpecoTest.dataize(temp.toString()),
