@@ -139,8 +139,6 @@ final class Speco {
     private static Path parse(final Path input) throws IOException {
         final StringBuilder name = new StringBuilder(input.toString());
         final Path source = Path.of(name.append("_prs").toString());
-        FileUtils.copyDirectory(input.toFile(), source.toFile());
-        LauncherKt.launch(source.toString());
         return Path.of(name.append("_aoi").toString());
     }
 }
