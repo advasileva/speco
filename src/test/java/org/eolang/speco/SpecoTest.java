@@ -102,9 +102,6 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void convertsFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        final Path input = TESTS.resolve("input");
-        final Path output = temp.resolve("output");
-        SpecoTest.run(script, input, output);
         MatcherAssert.assertThat(
             "Unexpected transformation result",
             SpecoTest.dataize(SpecoTest.run(script, this.TESTS, temp).toString()),
@@ -119,12 +116,9 @@ class SpecoTest {
     @ClasspathSource(value = "org/eolang/speco/packs", glob = "**.yaml")
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
-        final Path input = TESTS.resolve("input");
-        final Path output = temp.resolve("output");
-        SpecoTest.run(script, output, temp);
         MatcherAssert.assertThat(
             "Unexpected execution result",
-                Files.readString(SpecoTest.run(script, this.TESTS, temp).resolve("app.eo")),
+            Files.readString(SpecoTest.run(script, this.TESTS, temp).resolve("app.eo")),
             Matchers.equalTo(
                 script.get("result").toString().split("\\r?\\n")
             )
