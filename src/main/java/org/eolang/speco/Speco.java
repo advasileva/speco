@@ -92,17 +92,7 @@ final class Speco {
         }
         final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
         for (final Path path : directory) {
-            final String transformed = Speco.applyTrain(
-                Speco.getParsedXml(new XMLDocument(Files.readString(path)))
-            ).toString();
-            final String after;
-            if (this.eolang) {
-                after = new XMIR(transformed).toEO();
-            } else {
-                after = transformed;
-            }
             Files.createDirectories(this.output);
-            Files.write(this.output.resolve(path.getFileName()), after.getBytes());
         }
         directory.close();
         if (this.eolang) {
