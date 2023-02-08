@@ -33,6 +33,7 @@ import com.yegor256.xsline.Train;
 import com.yegor256.xsline.Xsline;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.apache.commons.io.FileUtils;
@@ -89,6 +90,7 @@ final class Speco {
         } else {
             source = this.input;
         }
+        final DirectoryStream directory = Files.newDirectoryStream(source);
         for (final Path path : Files.newDirectoryStream(source)) {
             final String transformed = Speco.applyTrain(
                 Speco.getParsedXml(new XMLDocument(Files.readString(path)))
@@ -102,6 +104,7 @@ final class Speco {
             Files.createDirectories(this.output);
             Files.write(this.output.resolve(path.getFileName()), after.getBytes());
         }
+        directory.close();
         if (this.eolang) {
             FileUtils.cleanDirectory(source.toFile());
         }
