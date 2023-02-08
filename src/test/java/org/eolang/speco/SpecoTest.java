@@ -133,6 +133,7 @@ class SpecoTest {
             script.get("before").toString().getBytes(),
             StandardOpenOption.CREATE
         );
+        Files.createDirectories(output);
         new Speco(input, output, true).exec();
         return output;
     }
