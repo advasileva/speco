@@ -90,14 +90,6 @@ final class Speco {
         } else {
             source = this.input;
         }
-        final DirectoryStream<Path> directory = Files.newDirectoryStream(source);
-        for (final Path path : directory) {
-            Files.createDirectories(this.output);
-        }
-        directory.close();
-        if (this.eolang) {
-            FileUtils.cleanDirectory(source.toFile());
-        }
     }
 
     /**
@@ -139,6 +131,15 @@ final class Speco {
     private static Path parse(final Path input) throws IOException {
         final StringBuilder name = new StringBuilder(input.toString());
         final Path source = Path.of(name.append("_prs").toString());
+        FileUtils.copyDirectory(input.toFile(), source.toFile());
+        for (final Path path : Files.newDirectoryStream(source)) {
+            new Syntax(
+                    "scenario",
+                    new InputOf(String.format("%s\n", Files.readString(path))),
+                    new OutputTo(new FileOutputStream(path.toFile()))
+            ).parse();
+        }
+        LauncherKt.launch(source.toString());
         return Path.of(name.append("_aoi").toString());
     }
 }
