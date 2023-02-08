@@ -90,10 +90,10 @@ final class Speco {
         final Path source;
         if (this.eolang) {
             source = parse(this.input);
-            FileUtils.cleanDirectory(Path.of(this.input.toString().concat("_prs")).toFile());
         } else {
             source = this.input;
         }
+        FileUtils.deleteQuietly(source.toFile());
     }
 
     /**
@@ -147,9 +147,6 @@ final class Speco {
             file.close();
         }
         LauncherKt.launch(source.toString());
-        try {
-            TimeUnit.SECONDS.sleep(10);
-        } catch (Exception ex) {}
         return Path.of(name.append("_aoi").toString());
     }
 }
