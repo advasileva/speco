@@ -103,10 +103,11 @@ class SpecoTest {
     public void convertsFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
         final Path input = TESTS.resolve("input");
-        SpecoTest.run(script, input, temp);
+        final Path output = temp.resolve("input");
+        SpecoTest.run(script, input, output);
         MatcherAssert.assertThat(
             "Unexpected transformation result",
-            Files.readString(temp.resolve("app.eo")),
+            Files.readString(output.resolve("app.eo")),
             Matchers.equalTo(
                 script.get("after").toString()
             )
@@ -119,10 +120,11 @@ class SpecoTest {
     public void compilesFromEo(final String pack, @TempDir final Path temp) throws IOException {
         final Map<String, Object> script = new Yaml().load(pack);
         final Path input = TESTS.resolve("input");
-        SpecoTest.run(script, input, temp);
+        final Path output = temp.resolve("input");
+        SpecoTest.run(script, output, temp);
         MatcherAssert.assertThat(
             "Unexpected execution result",
-            SpecoTest.dataize(temp.toString()),
+            SpecoTest.dataize(output.toString()),
             Matchers.equalTo(
                 script.get("result").toString().split("\\r?\\n")
             )
@@ -135,7 +137,6 @@ class SpecoTest {
      * @param script Yaml data object
      * @param input Path to the input dir
      * @param output Path to the output dir
-     * @return Path to the output dir
      * @throws IOException Iff IO error
      */
     private static void run(final Map<String, Object> script, final Path input, final Path output)
