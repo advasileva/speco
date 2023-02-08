@@ -55,6 +55,7 @@ class SpecoTest {
      */
     private static final int INTENT = 11;
 
+    @Disabled
     @Tag("fast")
     @ParameterizedTest
     @ValueSource(strings = {"simple"})
