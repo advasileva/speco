@@ -36,6 +36,8 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import org.apache.commons.io.FileDeleteStrategy;
 import org.apache.commons.io.FileUtils;
 import org.cactoos.io.InputOf;
 import org.cactoos.io.OutputTo;
@@ -91,7 +93,9 @@ final class Speco {
         } else {
             source = this.input;
         }
-        FileUtils.cleanDirectory(source.toFile());
+        for (final Path path : Files.newDirectoryStream(source)) {
+            FileDeleteStrategy.FORCE.delete(path.toFile());
+        }
     }
 
     /**
